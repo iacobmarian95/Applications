@@ -1,0 +1,285 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "StateMachine.cpp"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text._ZN13state_machine12StateMachineC2Ev,"ax",%progbits
+  20              	 .align 2
+  21              	 .global _ZN13state_machine12StateMachineC2Ev
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	_ZN13state_machine12StateMachineC2Ev:
+  26              	.LFB2:
+  27              	 .file 1 "../SM_LED/StateMachine.cpp"
+   1:../SM_LED/StateMachine.cpp **** /*
+   2:../SM_LED/StateMachine.cpp ****  * StateMachine.cpp
+   3:../SM_LED/StateMachine.cpp ****  *
+   4:../SM_LED/StateMachine.cpp ****  *  Created on: May 15, 2019
+   5:../SM_LED/StateMachine.cpp ****  *      Author: imarian
+   6:../SM_LED/StateMachine.cpp ****  */
+   7:../SM_LED/StateMachine.cpp **** 
+   8:../SM_LED/StateMachine.cpp **** #include"StateMachine.h"
+   9:../SM_LED/StateMachine.cpp **** 
+  10:../SM_LED/StateMachine.cpp **** state_machine::StateMachine::StateMachine() : m_currentState(0) {
+  28              	 .loc 1 10 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 83B0     	 sub sp,sp,#12
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 7860     	 str r0,[r7,#4]
+  44              	.LBB2:
+  45              	 .loc 1 10 0
+  46 0008 7B68     	 ldr r3,[r7,#4]
+  47 000a 064A     	 ldr r2,.L4
+  48 000c 1A60     	 str r2,[r3]
+  49 000e 7B68     	 ldr r3,[r7,#4]
+  50 0010 0022     	 movs r2,#0
+  51 0012 5A60     	 str r2,[r3,#4]
+  52              	.LBE2:
+  11:../SM_LED/StateMachine.cpp **** 
+  12:../SM_LED/StateMachine.cpp **** }
+  53              	 .loc 1 12 0
+  54 0014 7B68     	 ldr r3,[r7,#4]
+  55 0016 1846     	 mov r0,r3
+  56 0018 0C37     	 adds r7,r7,#12
+  57              	.LCFI3:
+  58              	 .cfi_def_cfa_offset 4
+  59 001a BD46     	 mov sp,r7
+  60              	.LCFI4:
+  61              	 .cfi_def_cfa_register 13
+  62              	 
+  63 001c 5DF8047B 	 ldr r7,[sp],#4
+  64              	.LCFI5:
+  65              	 .cfi_restore 7
+  66              	 .cfi_def_cfa_offset 0
+  67 0020 7047     	 bx lr
+  68              	.L5:
+  69 0022 00BF     	 .align 2
+  70              	.L4:
+  71 0024 08000000 	 .word _ZTVN13state_machine12StateMachineE+8
+  72              	 .cfi_endproc
+  73              	.LFE2:
+  75              	 .global _ZN13state_machine12StateMachineC1Ev
+  76              	 .thumb_set _ZN13state_machine12StateMachineC1Ev,_ZN13state_machine12StateMachineC2Ev
+  77              	 .section .text._ZN13state_machine12StateMachine12EventHandlerEii,"ax",%progbits
+  78              	 .align 2
+  79              	 .global _ZN13state_machine12StateMachine12EventHandlerEii
+  80              	 .thumb
+  81              	 .thumb_func
+  83              	_ZN13state_machine12StateMachine12EventHandlerEii:
+  84              	.LFB4:
+  13:../SM_LED/StateMachine.cpp **** 
+  14:../SM_LED/StateMachine.cpp **** void state_machine::StateMachine::EventHandler(int state, int data) {
+  85              	 .loc 1 14 0
+  86              	 .cfi_startproc
+  87              	 
+  88              	 
+  89 0000 80B5     	 push {r7,lr}
+  90              	.LCFI6:
+  91              	 .cfi_def_cfa_offset 8
+  92              	 .cfi_offset 7,-8
+  93              	 .cfi_offset 14,-4
+  94 0002 86B0     	 sub sp,sp,#24
+  95              	.LCFI7:
+  96              	 .cfi_def_cfa_offset 32
+  97 0004 00AF     	 add r7,sp,#0
+  98              	.LCFI8:
+  99              	 .cfi_def_cfa_register 7
+ 100 0006 F860     	 str r0,[r7,#12]
+ 101 0008 B960     	 str r1,[r7,#8]
+ 102 000a 7A60     	 str r2,[r7,#4]
+ 103              	.LBB3:
+ 104              	.LBB4:
+  15:../SM_LED/StateMachine.cpp **** 	if (state != state::IMPOSIBLE) {
+ 105              	 .loc 1 15 0
+ 106 000c BB68     	 ldr r3,[r7,#8]
+ 107 000e 4FF6FF72 	 movw r2,#65535
+ 108 0012 9342     	 cmp r3,r2
+ 109 0014 12D0     	 beq .L6
+ 110              	.LBB5:
+  16:../SM_LED/StateMachine.cpp **** 
+  17:../SM_LED/StateMachine.cpp **** 		state_action::IStateAction* mappedStates = GetFunctionToInvocke(state);
+ 111              	 .loc 1 17 0
+ 112 0016 FB68     	 ldr r3,[r7,#12]
+ 113 0018 1B68     	 ldr r3,[r3]
+ 114 001a 1B68     	 ldr r3,[r3]
+ 115 001c 07F10802 	 add r2,r7,#8
+ 116 0020 F868     	 ldr r0,[r7,#12]
+ 117 0022 1146     	 mov r1,r2
+ 118 0024 9847     	 blx r3
+ 119 0026 7861     	 str r0,[r7,#20]
+  18:../SM_LED/StateMachine.cpp **** 		(mappedStates->Caller)(this, data);
+ 120              	 .loc 1 18 0
+ 121 0028 7B69     	 ldr r3,[r7,#20]
+ 122 002a 1B68     	 ldr r3,[r3]
+ 123 002c 1B68     	 ldr r3,[r3]
+ 124 002e 7869     	 ldr r0,[r7,#20]
+ 125 0030 F968     	 ldr r1,[r7,#12]
+ 126 0032 7A68     	 ldr r2,[r7,#4]
+ 127 0034 9847     	 blx r3
+  19:../SM_LED/StateMachine.cpp **** 		m_currentState = state; // or more elegant to call set function to be more generic
+ 128              	 .loc 1 19 0
+ 129 0036 BA68     	 ldr r2,[r7,#8]
+ 130 0038 FB68     	 ldr r3,[r7,#12]
+ 131 003a 5A60     	 str r2,[r3,#4]
+ 132              	.L6:
+ 133              	.LBE5:
+ 134              	.LBE4:
+ 135              	.LBE3:
+  20:../SM_LED/StateMachine.cpp **** 	}
+  21:../SM_LED/StateMachine.cpp **** }
+ 136              	 .loc 1 21 0
+ 137 003c 1837     	 adds r7,r7,#24
+ 138              	.LCFI9:
+ 139              	 .cfi_def_cfa_offset 8
+ 140 003e BD46     	 mov sp,r7
+ 141              	.LCFI10:
+ 142              	 .cfi_def_cfa_register 13
+ 143              	 
+ 144 0040 80BD     	 pop {r7,pc}
+ 145              	 .cfi_endproc
+ 146              	.LFE4:
+ 148 0042 00BF     	 .section .text._ZN13state_machine12StateMachine15GetCurrentStateEv,"ax",%progbits
+ 149              	 .align 2
+ 150              	 .global _ZN13state_machine12StateMachine15GetCurrentStateEv
+ 151              	 .thumb
+ 152              	 .thumb_func
+ 154              	_ZN13state_machine12StateMachine15GetCurrentStateEv:
+ 155              	.LFB5:
+  22:../SM_LED/StateMachine.cpp **** 
+  23:../SM_LED/StateMachine.cpp **** int state_machine::StateMachine::GetCurrentState() {
+ 156              	 .loc 1 23 0
+ 157              	 .cfi_startproc
+ 158              	 
+ 159              	 
+ 160              	 
+ 161 0000 80B4     	 push {r7}
+ 162              	.LCFI11:
+ 163              	 .cfi_def_cfa_offset 4
+ 164              	 .cfi_offset 7,-4
+ 165 0002 83B0     	 sub sp,sp,#12
+ 166              	.LCFI12:
+ 167              	 .cfi_def_cfa_offset 16
+ 168 0004 00AF     	 add r7,sp,#0
+ 169              	.LCFI13:
+ 170              	 .cfi_def_cfa_register 7
+ 171 0006 7860     	 str r0,[r7,#4]
+  24:../SM_LED/StateMachine.cpp **** 	return m_currentState;
+ 172              	 .loc 1 24 0
+ 173 0008 7B68     	 ldr r3,[r7,#4]
+ 174 000a 5B68     	 ldr r3,[r3,#4]
+  25:../SM_LED/StateMachine.cpp **** }
+ 175              	 .loc 1 25 0
+ 176 000c 1846     	 mov r0,r3
+ 177 000e 0C37     	 adds r7,r7,#12
+ 178              	.LCFI14:
+ 179              	 .cfi_def_cfa_offset 4
+ 180 0010 BD46     	 mov sp,r7
+ 181              	.LCFI15:
+ 182              	 .cfi_def_cfa_register 13
+ 183              	 
+ 184 0012 5DF8047B 	 ldr r7,[sp],#4
+ 185              	.LCFI16:
+ 186              	 .cfi_restore 7
+ 187              	 .cfi_def_cfa_offset 0
+ 188 0016 7047     	 bx lr
+ 189              	 .cfi_endproc
+ 190              	.LFE5:
+ 192              	 .section .text._ZN13state_machine12StateMachine15SetCurrentStateEi,"ax",%progbits
+ 193              	 .align 2
+ 194              	 .global _ZN13state_machine12StateMachine15SetCurrentStateEi
+ 195              	 .thumb
+ 196              	 .thumb_func
+ 198              	_ZN13state_machine12StateMachine15SetCurrentStateEi:
+ 199              	.LFB6:
+  26:../SM_LED/StateMachine.cpp **** 
+  27:../SM_LED/StateMachine.cpp **** void state_machine::StateMachine::SetCurrentState(int state) {
+ 200              	 .loc 1 27 0
+ 201              	 .cfi_startproc
+ 202              	 
+ 203              	 
+ 204              	 
+ 205 0000 80B4     	 push {r7}
+ 206              	.LCFI17:
+ 207              	 .cfi_def_cfa_offset 4
+ 208              	 .cfi_offset 7,-4
+ 209 0002 83B0     	 sub sp,sp,#12
+ 210              	.LCFI18:
+ 211              	 .cfi_def_cfa_offset 16
+ 212 0004 00AF     	 add r7,sp,#0
+ 213              	.LCFI19:
+ 214              	 .cfi_def_cfa_register 7
+ 215 0006 7860     	 str r0,[r7,#4]
+ 216 0008 3960     	 str r1,[r7]
+  28:../SM_LED/StateMachine.cpp **** 	m_currentState = state;
+ 217              	 .loc 1 28 0
+ 218 000a 7B68     	 ldr r3,[r7,#4]
+ 219 000c 3A68     	 ldr r2,[r7]
+ 220 000e 5A60     	 str r2,[r3,#4]
+  29:../SM_LED/StateMachine.cpp **** }
+ 221              	 .loc 1 29 0
+ 222 0010 0C37     	 adds r7,r7,#12
+ 223              	.LCFI20:
+ 224              	 .cfi_def_cfa_offset 4
+ 225 0012 BD46     	 mov sp,r7
+ 226              	.LCFI21:
+ 227              	 .cfi_def_cfa_register 13
+ 228              	 
+ 229 0014 5DF8047B 	 ldr r7,[sp],#4
+ 230              	.LCFI22:
+ 231              	 .cfi_restore 7
+ 232              	 .cfi_def_cfa_offset 0
+ 233 0018 7047     	 bx lr
+ 234              	 .cfi_endproc
+ 235              	.LFE6:
+ 237              	 .weak _ZTVN13state_machine12StateMachineE
+ 238 001a 00BF     	 .section .rodata._ZTVN13state_machine12StateMachineE,"aG",%progbits,_ZTVN13state_machine12StateMachineE,comdat
+ 239              	 .align 3
+ 242              	_ZTVN13state_machine12StateMachineE:
+ 243 0000 00000000 	 .word 0
+ 244 0004 00000000 	 .word 0
+ 245 0008 00000000 	 .word __cxa_pure_virtual
+ 246 000c 00000000 	 .text
+ 247              	.Letext0:
+ 248              	 .file 2 "../SM_LED/StateMachine.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 StateMachine.cpp
+    {standard input}:20     .text._ZN13state_machine12StateMachineC2Ev:00000000 $t
+    {standard input}:25     .text._ZN13state_machine12StateMachineC2Ev:00000000 _ZN13state_machine12StateMachineC2Ev
+    {standard input}:71     .text._ZN13state_machine12StateMachineC2Ev:00000024 $d
+    {standard input}:242    .rodata._ZTVN13state_machine12StateMachineE:00000000 _ZTVN13state_machine12StateMachineE
+    {standard input}:25     .text._ZN13state_machine12StateMachineC2Ev:00000000 _ZN13state_machine12StateMachineC1Ev
+    {standard input}:78     .text._ZN13state_machine12StateMachine12EventHandlerEii:00000000 $t
+    {standard input}:83     .text._ZN13state_machine12StateMachine12EventHandlerEii:00000000 _ZN13state_machine12StateMachine12EventHandlerEii
+    {standard input}:149    .text._ZN13state_machine12StateMachine15GetCurrentStateEv:00000000 $t
+    {standard input}:154    .text._ZN13state_machine12StateMachine15GetCurrentStateEv:00000000 _ZN13state_machine12StateMachine15GetCurrentStateEv
+    {standard input}:193    .text._ZN13state_machine12StateMachine15SetCurrentStateEi:00000000 $t
+    {standard input}:198    .text._ZN13state_machine12StateMachine15SetCurrentStateEi:00000000 _ZN13state_machine12StateMachine15SetCurrentStateEi
+    {standard input}:239    .rodata._ZTVN13state_machine12StateMachineE:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__cxa_pure_virtual

@@ -1,0 +1,1192 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "LedController.cpp"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global _ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE
+  20              	 .section .rodata._ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE,"a",%progbits
+  21              	 .align 2
+  24              	_ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE:
+  25 0000 01000000 	 .word 1
+  26 0004 02000000 	 .word 2
+  27 0008 02000000 	 .word 2
+  28 000c FFFF0000 	 .word 65535
+  29              	 .global _ZN14led_controller13LedController19ON_STOP_TRANSITIONSE
+  30              	 .section .rodata._ZN14led_controller13LedController19ON_STOP_TRANSITIONSE,"a",%progbits
+  31              	 .align 2
+  34              	_ZN14led_controller13LedController19ON_STOP_TRANSITIONSE:
+  35 0000 FFFF0000 	 .word 65535
+  36 0004 03000000 	 .word 3
+  37 0008 03000000 	 .word 3
+  38 000c FFFF0000 	 .word 65535
+  39              	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC5Ev,comdat
+  40              	 .align 2
+  41              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev
+  42              	 .thumb
+  43              	 .thumb_func
+  45              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev:
+  46              	.LFB225:
+  47              	 .file 1 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED/StateMachine.h"
+   1:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** /*
+   2:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h ****  * StateMachine.h
+   3:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h ****  *
+   4:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h ****  *  Created on: May 15, 2019
+   5:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h ****  *      Author: imarian
+   6:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h ****  */
+   7:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+   8:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** #ifndef STATEMACHINE_H_
+   9:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** #define STATEMACHINE_H_
+  10:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  11:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  12:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  13:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** namespace state_machine {
+  14:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 	class StateMachine;
+  15:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** }
+  16:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  17:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** namespace state_machine {
+  18:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 	namespace state {
+  19:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		enum States{
+  20:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			IMPOSIBLE = 0xFFFF
+  21:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		};
+  22:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 	}
+  23:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  24:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 	namespace state_action {
+  25:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		class IStateAction {
+  26:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		public:
+  27:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			virtual void Caller(state_machine::StateMachine* sm, int data) = 0;
+  28:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		};
+  29:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 
+  30:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		template<class SM, void (SM::*Func)(int)>
+  31:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		class StateAction {
+  48              	 .loc 1 31 0
+  49              	 .cfi_startproc
+  50              	 
+  51              	 
+  52              	 
+  53 0000 80B4     	 push {r7}
+  54              	.LCFI0:
+  55              	 .cfi_def_cfa_offset 4
+  56              	 .cfi_offset 7,-4
+  57 0002 83B0     	 sub sp,sp,#12
+  58              	.LCFI1:
+  59              	 .cfi_def_cfa_offset 16
+  60 0004 00AF     	 add r7,sp,#0
+  61              	.LCFI2:
+  62              	 .cfi_def_cfa_register 7
+  63 0006 7860     	 str r0,[r7,#4]
+  64              	.LBB2:
+  65              	 .loc 1 31 0
+  66 0008 7B68     	 ldr r3,[r7,#4]
+  67 000a 044A     	 ldr r2,.L4
+  68 000c 1A60     	 str r2,[r3]
+  69              	.LBE2:
+  70 000e 7B68     	 ldr r3,[r7,#4]
+  71 0010 1846     	 mov r0,r3
+  72 0012 0C37     	 adds r7,r7,#12
+  73              	.LCFI3:
+  74              	 .cfi_def_cfa_offset 4
+  75 0014 BD46     	 mov sp,r7
+  76              	.LCFI4:
+  77              	 .cfi_def_cfa_register 13
+  78              	 
+  79 0016 5DF8047B 	 ldr r7,[sp],#4
+  80              	.LCFI5:
+  81              	 .cfi_restore 7
+  82              	 .cfi_def_cfa_offset 0
+  83 001a 7047     	 bx lr
+  84              	.L5:
+  85              	 .align 2
+  86              	.L4:
+  87 001c 08000000 	 .word _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE+8
+  88              	 .cfi_endproc
+  89              	.LFE225:
+  91              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC1Ev
+  92              	 .thumb_set _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC1Ev,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev
+  93              	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC5Ev,comdat
+  94              	 .align 2
+  95              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev
+  96              	 .thumb
+  97              	 .thumb_func
+  99              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev:
+ 100              	.LFB228:
+ 101              	 .loc 1 31 0
+ 102              	 .cfi_startproc
+ 103              	 
+ 104              	 
+ 105              	 
+ 106 0000 80B4     	 push {r7}
+ 107              	.LCFI6:
+ 108              	 .cfi_def_cfa_offset 4
+ 109              	 .cfi_offset 7,-4
+ 110 0002 83B0     	 sub sp,sp,#12
+ 111              	.LCFI7:
+ 112              	 .cfi_def_cfa_offset 16
+ 113 0004 00AF     	 add r7,sp,#0
+ 114              	.LCFI8:
+ 115              	 .cfi_def_cfa_register 7
+ 116 0006 7860     	 str r0,[r7,#4]
+ 117              	.LBB3:
+ 118              	 .loc 1 31 0
+ 119 0008 7B68     	 ldr r3,[r7,#4]
+ 120 000a 044A     	 ldr r2,.L9
+ 121 000c 1A60     	 str r2,[r3]
+ 122              	.LBE3:
+ 123 000e 7B68     	 ldr r3,[r7,#4]
+ 124 0010 1846     	 mov r0,r3
+ 125 0012 0C37     	 adds r7,r7,#12
+ 126              	.LCFI9:
+ 127              	 .cfi_def_cfa_offset 4
+ 128 0014 BD46     	 mov sp,r7
+ 129              	.LCFI10:
+ 130              	 .cfi_def_cfa_register 13
+ 131              	 
+ 132 0016 5DF8047B 	 ldr r7,[sp],#4
+ 133              	.LCFI11:
+ 134              	 .cfi_restore 7
+ 135              	 .cfi_def_cfa_offset 0
+ 136 001a 7047     	 bx lr
+ 137              	.L10:
+ 138              	 .align 2
+ 139              	.L9:
+ 140 001c 08000000 	 .word _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE+8
+ 141              	 .cfi_endproc
+ 142              	.LFE228:
+ 144              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC1Ev
+ 145              	 .thumb_set _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC1Ev,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev
+ 146              	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC5Ev,comdat
+ 147              	 .align 2
+ 148              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev
+ 149              	 .thumb
+ 150              	 .thumb_func
+ 152              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev:
+ 153              	.LFB231:
+ 154              	 .loc 1 31 0
+ 155              	 .cfi_startproc
+ 156              	 
+ 157              	 
+ 158              	 
+ 159 0000 80B4     	 push {r7}
+ 160              	.LCFI12:
+ 161              	 .cfi_def_cfa_offset 4
+ 162              	 .cfi_offset 7,-4
+ 163 0002 83B0     	 sub sp,sp,#12
+ 164              	.LCFI13:
+ 165              	 .cfi_def_cfa_offset 16
+ 166 0004 00AF     	 add r7,sp,#0
+ 167              	.LCFI14:
+ 168              	 .cfi_def_cfa_register 7
+ 169 0006 7860     	 str r0,[r7,#4]
+ 170              	.LBB4:
+ 171              	 .loc 1 31 0
+ 172 0008 7B68     	 ldr r3,[r7,#4]
+ 173 000a 044A     	 ldr r2,.L14
+ 174 000c 1A60     	 str r2,[r3]
+ 175              	.LBE4:
+ 176 000e 7B68     	 ldr r3,[r7,#4]
+ 177 0010 1846     	 mov r0,r3
+ 178 0012 0C37     	 adds r7,r7,#12
+ 179              	.LCFI15:
+ 180              	 .cfi_def_cfa_offset 4
+ 181 0014 BD46     	 mov sp,r7
+ 182              	.LCFI16:
+ 183              	 .cfi_def_cfa_register 13
+ 184              	 
+ 185 0016 5DF8047B 	 ldr r7,[sp],#4
+ 186              	.LCFI17:
+ 187              	 .cfi_restore 7
+ 188              	 .cfi_def_cfa_offset 0
+ 189 001a 7047     	 bx lr
+ 190              	.L15:
+ 191              	 .align 2
+ 192              	.L14:
+ 193 001c 08000000 	 .word _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE+8
+ 194              	 .cfi_endproc
+ 195              	.LFE231:
+ 197              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC1Ev
+ 198              	 .thumb_set _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC1Ev,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev
+ 199              	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC5Ev,comdat
+ 200              	 .align 2
+ 201              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev
+ 202              	 .thumb
+ 203              	 .thumb_func
+ 205              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev:
+ 206              	.LFB234:
+ 207              	 .loc 1 31 0
+ 208              	 .cfi_startproc
+ 209              	 
+ 210              	 
+ 211              	 
+ 212 0000 80B4     	 push {r7}
+ 213              	.LCFI18:
+ 214              	 .cfi_def_cfa_offset 4
+ 215              	 .cfi_offset 7,-4
+ 216 0002 83B0     	 sub sp,sp,#12
+ 217              	.LCFI19:
+ 218              	 .cfi_def_cfa_offset 16
+ 219 0004 00AF     	 add r7,sp,#0
+ 220              	.LCFI20:
+ 221              	 .cfi_def_cfa_register 7
+ 222 0006 7860     	 str r0,[r7,#4]
+ 223              	.LBB5:
+ 224              	 .loc 1 31 0
+ 225 0008 7B68     	 ldr r3,[r7,#4]
+ 226 000a 044A     	 ldr r2,.L19
+ 227 000c 1A60     	 str r2,[r3]
+ 228              	.LBE5:
+ 229 000e 7B68     	 ldr r3,[r7,#4]
+ 230 0010 1846     	 mov r0,r3
+ 231 0012 0C37     	 adds r7,r7,#12
+ 232              	.LCFI21:
+ 233              	 .cfi_def_cfa_offset 4
+ 234 0014 BD46     	 mov sp,r7
+ 235              	.LCFI22:
+ 236              	 .cfi_def_cfa_register 13
+ 237              	 
+ 238 0016 5DF8047B 	 ldr r7,[sp],#4
+ 239              	.LCFI23:
+ 240              	 .cfi_restore 7
+ 241              	 .cfi_def_cfa_offset 0
+ 242 001a 7047     	 bx lr
+ 243              	.L20:
+ 244              	 .align 2
+ 245              	.L19:
+ 246 001c 08000000 	 .word _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE+8
+ 247              	 .cfi_endproc
+ 248              	.LFE234:
+ 250              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC1Ev
+ 251              	 .thumb_set _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC1Ev,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev
+ 252              	 .section .text._ZN14led_controller13LedControllerC2Ev,"ax",%progbits
+ 253              	 .align 2
+ 254              	 .global _ZN14led_controller13LedControllerC2Ev
+ 255              	 .thumb
+ 256              	 .thumb_func
+ 258              	_ZN14led_controller13LedControllerC2Ev:
+ 259              	.LFB236:
+ 260              	 .file 2 "../SM_LED/LedController.cpp"
+   1:../SM_LED/LedController.cpp **** /*
+   2:../SM_LED/LedController.cpp ****  * LedController.cpp
+   3:../SM_LED/LedController.cpp ****  *
+   4:../SM_LED/LedController.cpp ****  *  Created on: May 15, 2019
+   5:../SM_LED/LedController.cpp ****  *      Author: imarian
+   6:../SM_LED/LedController.cpp ****  */
+   7:../SM_LED/LedController.cpp **** 
+   8:../SM_LED/LedController.cpp **** #include <SM_LED/LedController.h>
+   9:../SM_LED/LedController.cpp **** 
+  10:../SM_LED/LedController.cpp **** /*						ON_CHANGE_SPEED EVENT
+  11:../SM_LED/LedController.cpp **** 	*	1. If we are in idle state => can go in Start state
+  12:../SM_LED/LedController.cpp **** 	*	2. If we are in start state => we can go in Change_Light state
+  13:../SM_LED/LedController.cpp **** 	*	3. If we are in Change_Light state => we can go in Change_Light state (will not change current s
+  14:../SM_LED/LedController.cpp **** 	*	4. In case if we are in Stop state => is impossible to go in Change_Light state
+  15:../SM_LED/LedController.cpp **** */
+  16:../SM_LED/LedController.cpp **** const int led_controller::LedController::ON_CHANGE_LIGHT_TRANSITIONS[] = {
+  17:../SM_LED/LedController.cpp **** 	state::START,
+  18:../SM_LED/LedController.cpp **** 	state::CHANGE_LIGHT,
+  19:../SM_LED/LedController.cpp **** 	state::CHANGE_LIGHT,
+  20:../SM_LED/LedController.cpp **** 	state_machine::state::IMPOSIBLE
+  21:../SM_LED/LedController.cpp **** };
+  22:../SM_LED/LedController.cpp **** 
+  23:../SM_LED/LedController.cpp **** /*							ON_STOP_EVENT
+  24:../SM_LED/LedController.cpp **** 	*	1. If we are in idle state => is impossible to go in Stop state
+  25:../SM_LED/LedController.cpp **** 	*	2. If we are in start state => we can go in Stop state
+  26:../SM_LED/LedController.cpp **** 	*	3. If we are in Change_Light => we can in in Stop state
+  27:../SM_LED/LedController.cpp **** 	*	4. If we already are in Stop state => we cannot go in Stop action
+  28:../SM_LED/LedController.cpp **** */
+  29:../SM_LED/LedController.cpp **** const int led_controller::LedController::ON_STOP_TRANSITIONS[] = {
+  30:../SM_LED/LedController.cpp **** 	state_machine::state::IMPOSIBLE,
+  31:../SM_LED/LedController.cpp **** 	state::STOP,
+  32:../SM_LED/LedController.cpp **** 	state::STOP,
+  33:../SM_LED/LedController.cpp **** 	state_machine::state::IMPOSIBLE
+  34:../SM_LED/LedController.cpp **** };
+  35:../SM_LED/LedController.cpp **** 
+  36:../SM_LED/LedController.cpp **** led_controller::LedController::LedController(): m_dutyCycle(0) {
+ 261              	 .loc 2 36 0
+ 262              	 .cfi_startproc
+ 263              	 
+ 264              	 
+ 265 0000 80B5     	 push {r7,lr}
+ 266              	.LCFI24:
+ 267              	 .cfi_def_cfa_offset 8
+ 268              	 .cfi_offset 7,-8
+ 269              	 .cfi_offset 14,-4
+ 270 0002 82B0     	 sub sp,sp,#8
+ 271              	.LCFI25:
+ 272              	 .cfi_def_cfa_offset 16
+ 273 0004 00AF     	 add r7,sp,#0
+ 274              	.LCFI26:
+ 275              	 .cfi_def_cfa_register 7
+ 276 0006 7860     	 str r0,[r7,#4]
+ 277              	.LBB6:
+ 278              	 .loc 2 36 0
+ 279 0008 7B68     	 ldr r3,[r7,#4]
+ 280 000a 1846     	 mov r0,r3
+ 281 000c FFF7FEFF 	 bl _ZN13state_machine12StateMachineC2Ev
+ 282 0010 7B68     	 ldr r3,[r7,#4]
+ 283 0012 194A     	 ldr r2,.L24
+ 284 0014 1A60     	 str r2,[r3]
+ 285 0016 7B68     	 ldr r3,[r7,#4]
+ 286 0018 0022     	 movs r2,#0
+ 287 001a 9A60     	 str r2,[r3,#8]
+ 288 001c 7B68     	 ldr r3,[r7,#4]
+ 289 001e 1C33     	 adds r3,r3,#28
+ 290 0020 1846     	 mov r0,r3
+ 291 0022 FFF7FEFF 	 bl _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC1Ev
+ 292 0026 7B68     	 ldr r3,[r7,#4]
+ 293 0028 2033     	 adds r3,r3,#32
+ 294 002a 1846     	 mov r0,r3
+ 295 002c FFF7FEFF 	 bl _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC1Ev
+ 296 0030 7B68     	 ldr r3,[r7,#4]
+ 297 0032 2433     	 adds r3,r3,#36
+ 298 0034 1846     	 mov r0,r3
+ 299 0036 FFF7FEFF 	 bl _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC1Ev
+ 300 003a 7B68     	 ldr r3,[r7,#4]
+ 301 003c 2833     	 adds r3,r3,#40
+ 302 003e 1846     	 mov r0,r3
+ 303 0040 FFF7FEFF 	 bl _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC1Ev
+  37:../SM_LED/LedController.cpp **** 	MappedStatesToAction[0] = (state_machine::state_action::IStateAction*) (&_idle);
+ 304              	 .loc 2 37 0
+ 305 0044 7B68     	 ldr r3,[r7,#4]
+ 306 0046 03F11C02 	 add r2,r3,#28
+ 307 004a 7B68     	 ldr r3,[r7,#4]
+ 308 004c DA60     	 str r2,[r3,#12]
+  38:../SM_LED/LedController.cpp **** 	MappedStatesToAction[1] = (state_machine::state_action::IStateAction*) (&_start);
+ 309              	 .loc 2 38 0
+ 310 004e 7B68     	 ldr r3,[r7,#4]
+ 311 0050 03F12002 	 add r2,r3,#32
+ 312 0054 7B68     	 ldr r3,[r7,#4]
+ 313 0056 1A61     	 str r2,[r3,#16]
+  39:../SM_LED/LedController.cpp **** 	MappedStatesToAction[2] = (state_machine::state_action::IStateAction*) (&_changeLight);
+ 314              	 .loc 2 39 0
+ 315 0058 7B68     	 ldr r3,[r7,#4]
+ 316 005a 03F12402 	 add r2,r3,#36
+ 317 005e 7B68     	 ldr r3,[r7,#4]
+ 318 0060 5A61     	 str r2,[r3,#20]
+  40:../SM_LED/LedController.cpp **** 	MappedStatesToAction[3] = (state_machine::state_action::IStateAction*) (&_stop);
+ 319              	 .loc 2 40 0
+ 320 0062 7B68     	 ldr r3,[r7,#4]
+ 321 0064 03F12802 	 add r2,r3,#40
+ 322 0068 7B68     	 ldr r3,[r7,#4]
+ 323 006a 9A61     	 str r2,[r3,#24]
+ 324              	.LBE6:
+  41:../SM_LED/LedController.cpp **** }
+ 325              	 .loc 2 41 0
+ 326 006c 7B68     	 ldr r3,[r7,#4]
+ 327 006e 1846     	 mov r0,r3
+ 328 0070 0837     	 adds r7,r7,#8
+ 329              	.LCFI27:
+ 330              	 .cfi_def_cfa_offset 8
+ 331 0072 BD46     	 mov sp,r7
+ 332              	.LCFI28:
+ 333              	 .cfi_def_cfa_register 13
+ 334              	 
+ 335 0074 80BD     	 pop {r7,pc}
+ 336              	.L25:
+ 337 0076 00BF     	 .align 2
+ 338              	.L24:
+ 339 0078 08000000 	 .word _ZTVN14led_controller13LedControllerE+8
+ 340              	 .cfi_endproc
+ 341              	.LFE236:
+ 343              	 .global _ZN14led_controller13LedControllerC1Ev
+ 344              	 .thumb_set _ZN14led_controller13LedControllerC1Ev,_ZN14led_controller13LedControllerC2Ev
+ 345              	 .section .text._ZN14led_controller13LedController7LightUpEi,"ax",%progbits
+ 346              	 .align 2
+ 347              	 .global _ZN14led_controller13LedController7LightUpEi
+ 348              	 .thumb
+ 349              	 .thumb_func
+ 351              	_ZN14led_controller13LedController7LightUpEi:
+ 352              	.LFB238:
+  42:../SM_LED/LedController.cpp **** /* ************** we provide three functions for our consumer **************/
+  43:../SM_LED/LedController.cpp **** void led_controller::LedController::LightUp(int howMuch) {
+ 353              	 .loc 2 43 0
+ 354              	 .cfi_startproc
+ 355              	 
+ 356              	 
+ 357 0000 90B5     	 push {r4,r7,lr}
+ 358              	.LCFI29:
+ 359              	 .cfi_def_cfa_offset 12
+ 360              	 .cfi_offset 4,-12
+ 361              	 .cfi_offset 7,-8
+ 362              	 .cfi_offset 14,-4
+ 363 0002 83B0     	 sub sp,sp,#12
+ 364              	.LCFI30:
+ 365              	 .cfi_def_cfa_offset 24
+ 366 0004 00AF     	 add r7,sp,#0
+ 367              	.LCFI31:
+ 368              	 .cfi_def_cfa_register 7
+ 369 0006 7860     	 str r0,[r7,#4]
+ 370 0008 3960     	 str r1,[r7]
+  44:../SM_LED/LedController.cpp **** 	EventHandler(ON_CHANGE_LIGHT_TRANSITIONS[GetCurrentState()], howMuch);
+ 371              	 .loc 2 44 0
+ 372 000a 7C68     	 ldr r4,[r7,#4]
+ 373 000c 7B68     	 ldr r3,[r7,#4]
+ 374 000e 1846     	 mov r0,r3
+ 375 0010 FFF7FEFF 	 bl _ZN13state_machine12StateMachine15GetCurrentStateEv
+ 376 0014 0246     	 mov r2,r0
+ 377 0016 054B     	 ldr r3,.L27
+ 378 0018 53F82230 	 ldr r3,[r3,r2,lsl#2]
+ 379 001c 2046     	 mov r0,r4
+ 380 001e 1946     	 mov r1,r3
+ 381 0020 3A68     	 ldr r2,[r7]
+ 382 0022 FFF7FEFF 	 bl _ZN13state_machine12StateMachine12EventHandlerEii
+  45:../SM_LED/LedController.cpp **** }
+ 383              	 .loc 2 45 0
+ 384 0026 0C37     	 adds r7,r7,#12
+ 385              	.LCFI32:
+ 386              	 .cfi_def_cfa_offset 12
+ 387 0028 BD46     	 mov sp,r7
+ 388              	.LCFI33:
+ 389              	 .cfi_def_cfa_register 13
+ 390              	 
+ 391 002a 90BD     	 pop {r4,r7,pc}
+ 392              	.L28:
+ 393              	 .align 2
+ 394              	.L27:
+ 395 002c 00000000 	 .word _ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE
+ 396              	 .cfi_endproc
+ 397              	.LFE238:
+ 399              	 .section .text._ZN14led_controller13LedController9LightDownEi,"ax",%progbits
+ 400              	 .align 2
+ 401              	 .global _ZN14led_controller13LedController9LightDownEi
+ 402              	 .thumb
+ 403              	 .thumb_func
+ 405              	_ZN14led_controller13LedController9LightDownEi:
+ 406              	.LFB239:
+  46:../SM_LED/LedController.cpp **** 
+  47:../SM_LED/LedController.cpp **** void led_controller::LedController::LightDown(int howMuch) {
+ 407              	 .loc 2 47 0
+ 408              	 .cfi_startproc
+ 409              	 
+ 410              	 
+ 411 0000 90B5     	 push {r4,r7,lr}
+ 412              	.LCFI34:
+ 413              	 .cfi_def_cfa_offset 12
+ 414              	 .cfi_offset 4,-12
+ 415              	 .cfi_offset 7,-8
+ 416              	 .cfi_offset 14,-4
+ 417 0002 83B0     	 sub sp,sp,#12
+ 418              	.LCFI35:
+ 419              	 .cfi_def_cfa_offset 24
+ 420 0004 00AF     	 add r7,sp,#0
+ 421              	.LCFI36:
+ 422              	 .cfi_def_cfa_register 7
+ 423 0006 7860     	 str r0,[r7,#4]
+ 424 0008 3960     	 str r1,[r7]
+  48:../SM_LED/LedController.cpp **** 	howMuch = -howMuch;	//we will subtract from current speed
+ 425              	 .loc 2 48 0
+ 426 000a 3B68     	 ldr r3,[r7]
+ 427 000c 5B42     	 negs r3,r3
+ 428 000e 3B60     	 str r3,[r7]
+  49:../SM_LED/LedController.cpp **** 	EventHandler(ON_CHANGE_LIGHT_TRANSITIONS[GetCurrentState()], howMuch);
+ 429              	 .loc 2 49 0
+ 430 0010 7C68     	 ldr r4,[r7,#4]
+ 431 0012 7B68     	 ldr r3,[r7,#4]
+ 432 0014 1846     	 mov r0,r3
+ 433 0016 FFF7FEFF 	 bl _ZN13state_machine12StateMachine15GetCurrentStateEv
+ 434 001a 0246     	 mov r2,r0
+ 435 001c 054B     	 ldr r3,.L30
+ 436 001e 53F82230 	 ldr r3,[r3,r2,lsl#2]
+ 437 0022 2046     	 mov r0,r4
+ 438 0024 1946     	 mov r1,r3
+ 439 0026 3A68     	 ldr r2,[r7]
+ 440 0028 FFF7FEFF 	 bl _ZN13state_machine12StateMachine12EventHandlerEii
+  50:../SM_LED/LedController.cpp **** }
+ 441              	 .loc 2 50 0
+ 442 002c 0C37     	 adds r7,r7,#12
+ 443              	.LCFI37:
+ 444              	 .cfi_def_cfa_offset 12
+ 445 002e BD46     	 mov sp,r7
+ 446              	.LCFI38:
+ 447              	 .cfi_def_cfa_register 13
+ 448              	 
+ 449 0030 90BD     	 pop {r4,r7,pc}
+ 450              	.L31:
+ 451 0032 00BF     	 .align 2
+ 452              	.L30:
+ 453 0034 00000000 	 .word _ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE
+ 454              	 .cfi_endproc
+ 455              	.LFE239:
+ 457              	 .section .text._ZN14led_controller13LedController4StopEv,"ax",%progbits
+ 458              	 .align 2
+ 459              	 .global _ZN14led_controller13LedController4StopEv
+ 460              	 .thumb
+ 461              	 .thumb_func
+ 463              	_ZN14led_controller13LedController4StopEv:
+ 464              	.LFB240:
+  51:../SM_LED/LedController.cpp **** 
+  52:../SM_LED/LedController.cpp **** void led_controller::LedController::Stop() {
+ 465              	 .loc 2 52 0
+ 466              	 .cfi_startproc
+ 467              	 
+ 468              	 
+ 469 0000 90B5     	 push {r4,r7,lr}
+ 470              	.LCFI39:
+ 471              	 .cfi_def_cfa_offset 12
+ 472              	 .cfi_offset 4,-12
+ 473              	 .cfi_offset 7,-8
+ 474              	 .cfi_offset 14,-4
+ 475 0002 83B0     	 sub sp,sp,#12
+ 476              	.LCFI40:
+ 477              	 .cfi_def_cfa_offset 24
+ 478 0004 00AF     	 add r7,sp,#0
+ 479              	.LCFI41:
+ 480              	 .cfi_def_cfa_register 7
+ 481 0006 7860     	 str r0,[r7,#4]
+  53:../SM_LED/LedController.cpp **** 	EventHandler(ON_STOP_TRANSITIONS[GetCurrentState()], 0);
+ 482              	 .loc 2 53 0
+ 483 0008 7C68     	 ldr r4,[r7,#4]
+ 484 000a 7B68     	 ldr r3,[r7,#4]
+ 485 000c 1846     	 mov r0,r3
+ 486 000e FFF7FEFF 	 bl _ZN13state_machine12StateMachine15GetCurrentStateEv
+ 487 0012 0246     	 mov r2,r0
+ 488 0014 074B     	 ldr r3,.L33
+ 489 0016 53F82230 	 ldr r3,[r3,r2,lsl#2]
+ 490 001a 2046     	 mov r0,r4
+ 491 001c 1946     	 mov r1,r3
+ 492 001e 0022     	 movs r2,#0
+ 493 0020 FFF7FEFF 	 bl _ZN13state_machine12StateMachine12EventHandlerEii
+  54:../SM_LED/LedController.cpp **** 	//Once I'm stopped - I will go in idle state
+  55:../SM_LED/LedController.cpp **** 	SetCurrentState(led_controller::state::IDLE);
+ 494              	 .loc 2 55 0
+ 495 0024 7B68     	 ldr r3,[r7,#4]
+ 496 0026 1846     	 mov r0,r3
+ 497 0028 0021     	 movs r1,#0
+ 498 002a FFF7FEFF 	 bl _ZN13state_machine12StateMachine15SetCurrentStateEi
+  56:../SM_LED/LedController.cpp **** }
+ 499              	 .loc 2 56 0
+ 500 002e 0C37     	 adds r7,r7,#12
+ 501              	.LCFI42:
+ 502              	 .cfi_def_cfa_offset 12
+ 503 0030 BD46     	 mov sp,r7
+ 504              	.LCFI43:
+ 505              	 .cfi_def_cfa_register 13
+ 506              	 
+ 507 0032 90BD     	 pop {r4,r7,pc}
+ 508              	.L34:
+ 509              	 .align 2
+ 510              	.L33:
+ 511 0034 00000000 	 .word _ZN14led_controller13LedController19ON_STOP_TRANSITIONSE
+ 512              	 .cfi_endproc
+ 513              	.LFE240:
+ 515              	 .section .text._ZN14led_controller13LedController20GetFunctionToInvockeERKi,"ax",%progbits
+ 516              	 .align 2
+ 517              	 .global _ZN14led_controller13LedController20GetFunctionToInvockeERKi
+ 518              	 .thumb
+ 519              	 .thumb_func
+ 521              	_ZN14led_controller13LedController20GetFunctionToInvockeERKi:
+ 522              	.LFB241:
+  57:../SM_LED/LedController.cpp **** 
+  58:../SM_LED/LedController.cpp **** /******************** which function must be called *************************/
+  59:../SM_LED/LedController.cpp **** state_machine::state_action::IStateAction* led_controller::LedController::GetFunctionToInvocke(cons
+ 523              	 .loc 2 59 0
+ 524              	 .cfi_startproc
+ 525              	 
+ 526              	 
+ 527              	 
+ 528 0000 80B4     	 push {r7}
+ 529              	.LCFI44:
+ 530              	 .cfi_def_cfa_offset 4
+ 531              	 .cfi_offset 7,-4
+ 532 0002 83B0     	 sub sp,sp,#12
+ 533              	.LCFI45:
+ 534              	 .cfi_def_cfa_offset 16
+ 535 0004 00AF     	 add r7,sp,#0
+ 536              	.LCFI46:
+ 537              	 .cfi_def_cfa_register 7
+ 538 0006 7860     	 str r0,[r7,#4]
+ 539 0008 3960     	 str r1,[r7]
+  60:../SM_LED/LedController.cpp **** 	return MappedStatesToAction[state];
+ 540              	 .loc 2 60 0
+ 541 000a 3B68     	 ldr r3,[r7]
+ 542 000c 1B68     	 ldr r3,[r3]
+ 543 000e 7A68     	 ldr r2,[r7,#4]
+ 544 0010 0233     	 adds r3,r3,#2
+ 545 0012 9B00     	 lsls r3,r3,#2
+ 546 0014 1344     	 add r3,r3,r2
+ 547 0016 5B68     	 ldr r3,[r3,#4]
+  61:../SM_LED/LedController.cpp **** }
+ 548              	 .loc 2 61 0
+ 549 0018 1846     	 mov r0,r3
+ 550 001a 0C37     	 adds r7,r7,#12
+ 551              	.LCFI47:
+ 552              	 .cfi_def_cfa_offset 4
+ 553 001c BD46     	 mov sp,r7
+ 554              	.LCFI48:
+ 555              	 .cfi_def_cfa_register 13
+ 556              	 
+ 557 001e 5DF8047B 	 ldr r7,[sp],#4
+ 558              	.LCFI49:
+ 559              	 .cfi_restore 7
+ 560              	 .cfi_def_cfa_offset 0
+ 561 0022 7047     	 bx lr
+ 562              	 .cfi_endproc
+ 563              	.LFE241:
+ 565              	 .section .text._ZN14led_controller13LedController4idleEi,"ax",%progbits
+ 566              	 .align 2
+ 567              	 .global _ZN14led_controller13LedController4idleEi
+ 568              	 .thumb
+ 569              	 .thumb_func
+ 571              	_ZN14led_controller13LedController4idleEi:
+ 572              	.LFB242:
+  62:../SM_LED/LedController.cpp **** 
+  63:../SM_LED/LedController.cpp **** /* ********* through those functions we will handle our transitions *********/
+  64:../SM_LED/LedController.cpp **** void led_controller::LedController::idle(int alhpa = 0) {
+ 573              	 .loc 2 64 0
+ 574              	 .cfi_startproc
+ 575              	 
+ 576              	 
+ 577              	 
+ 578 0000 80B4     	 push {r7}
+ 579              	.LCFI50:
+ 580              	 .cfi_def_cfa_offset 4
+ 581              	 .cfi_offset 7,-4
+ 582 0002 83B0     	 sub sp,sp,#12
+ 583              	.LCFI51:
+ 584              	 .cfi_def_cfa_offset 16
+ 585 0004 00AF     	 add r7,sp,#0
+ 586              	.LCFI52:
+ 587              	 .cfi_def_cfa_register 7
+ 588 0006 7860     	 str r0,[r7,#4]
+ 589 0008 3960     	 str r1,[r7]
+  65:../SM_LED/LedController.cpp **** 
+  66:../SM_LED/LedController.cpp **** }
+ 590              	 .loc 2 66 0
+ 591 000a 0C37     	 adds r7,r7,#12
+ 592              	.LCFI53:
+ 593              	 .cfi_def_cfa_offset 4
+ 594 000c BD46     	 mov sp,r7
+ 595              	.LCFI54:
+ 596              	 .cfi_def_cfa_register 13
+ 597              	 
+ 598 000e 5DF8047B 	 ldr r7,[sp],#4
+ 599              	.LCFI55:
+ 600              	 .cfi_restore 7
+ 601              	 .cfi_def_cfa_offset 0
+ 602 0012 7047     	 bx lr
+ 603              	 .cfi_endproc
+ 604              	.LFE242:
+ 606              	 .section .text._ZN14led_controller13LedController5startEi,"ax",%progbits
+ 607              	 .align 2
+ 608              	 .global _ZN14led_controller13LedController5startEi
+ 609              	 .thumb
+ 610              	 .thumb_func
+ 612              	_ZN14led_controller13LedController5startEi:
+ 613              	.LFB243:
+  67:../SM_LED/LedController.cpp **** 
+  68:../SM_LED/LedController.cpp **** void led_controller::LedController::start(int alpha) {
+ 614              	 .loc 2 68 0
+ 615              	 .cfi_startproc
+ 616              	 
+ 617              	 
+ 618 0000 80B5     	 push {r7,lr}
+ 619              	.LCFI56:
+ 620              	 .cfi_def_cfa_offset 8
+ 621              	 .cfi_offset 7,-8
+ 622              	 .cfi_offset 14,-4
+ 623 0002 82B0     	 sub sp,sp,#8
+ 624              	.LCFI57:
+ 625              	 .cfi_def_cfa_offset 16
+ 626 0004 00AF     	 add r7,sp,#0
+ 627              	.LCFI58:
+ 628              	 .cfi_def_cfa_register 7
+ 629 0006 7860     	 str r0,[r7,#4]
+ 630 0008 3960     	 str r1,[r7]
+  69:../SM_LED/LedController.cpp **** 	m_dutyCycle = alpha;
+ 631              	 .loc 2 69 0
+ 632 000a 7B68     	 ldr r3,[r7,#4]
+ 633 000c 3A68     	 ldr r2,[r7]
+ 634 000e 9A60     	 str r2,[r3,#8]
+  70:../SM_LED/LedController.cpp **** 	PWM_SetDutyCycle(&LED, m_dutyCycle);
+ 635              	 .loc 2 70 0
+ 636 0010 7B68     	 ldr r3,[r7,#4]
+ 637 0012 9B68     	 ldr r3,[r3,#8]
+ 638 0014 0348     	 ldr r0,.L39
+ 639 0016 1946     	 mov r1,r3
+ 640 0018 FFF7FEFF 	 bl PWM_SetDutyCycle
+  71:../SM_LED/LedController.cpp **** }
+ 641              	 .loc 2 71 0
+ 642 001c 0837     	 adds r7,r7,#8
+ 643              	.LCFI59:
+ 644              	 .cfi_def_cfa_offset 8
+ 645 001e BD46     	 mov sp,r7
+ 646              	.LCFI60:
+ 647              	 .cfi_def_cfa_register 13
+ 648              	 
+ 649 0020 80BD     	 pop {r7,pc}
+ 650              	.L40:
+ 651 0022 00BF     	 .align 2
+ 652              	.L39:
+ 653 0024 00000000 	 .word LED
+ 654              	 .cfi_endproc
+ 655              	.LFE243:
+ 657              	 .section .text._ZN14led_controller13LedController11changeLightEi,"ax",%progbits
+ 658              	 .align 2
+ 659              	 .global _ZN14led_controller13LedController11changeLightEi
+ 660              	 .thumb
+ 661              	 .thumb_func
+ 663              	_ZN14led_controller13LedController11changeLightEi:
+ 664              	.LFB244:
+  72:../SM_LED/LedController.cpp **** 
+  73:../SM_LED/LedController.cpp **** void led_controller::LedController::changeLight(int alpha) {
+ 665              	 .loc 2 73 0
+ 666              	 .cfi_startproc
+ 667              	 
+ 668              	 
+ 669 0000 80B5     	 push {r7,lr}
+ 670              	.LCFI61:
+ 671              	 .cfi_def_cfa_offset 8
+ 672              	 .cfi_offset 7,-8
+ 673              	 .cfi_offset 14,-4
+ 674 0002 82B0     	 sub sp,sp,#8
+ 675              	.LCFI62:
+ 676              	 .cfi_def_cfa_offset 16
+ 677 0004 00AF     	 add r7,sp,#0
+ 678              	.LCFI63:
+ 679              	 .cfi_def_cfa_register 7
+ 680 0006 7860     	 str r0,[r7,#4]
+ 681 0008 3960     	 str r1,[r7]
+  74:../SM_LED/LedController.cpp **** 	//this is the range
+  75:../SM_LED/LedController.cpp **** 	if(m_dutyCycle + alpha < 0 || m_dutyCycle + alpha > 10000U)
+ 682              	 .loc 2 75 0
+ 683 000a 7B68     	 ldr r3,[r7,#4]
+ 684 000c 9A68     	 ldr r2,[r3,#8]
+ 685 000e 3B68     	 ldr r3,[r7]
+ 686 0010 1344     	 add r3,r3,r2
+ 687 0012 002B     	 cmp r3,#0
+ 688 0014 08DB     	 blt .L42
+ 689              	 .loc 2 75 0 is_stmt 0 discriminator 1
+ 690 0016 7B68     	 ldr r3,[r7,#4]
+ 691 0018 9A68     	 ldr r2,[r3,#8]
+ 692 001a 3B68     	 ldr r3,[r7]
+ 693 001c 1344     	 add r3,r3,r2
+ 694 001e 1A46     	 mov r2,r3
+ 695 0020 42F21073 	 movw r3,#10000
+ 696 0024 9A42     	 cmp r2,r3
+ 697 0026 00D9     	 bls .L43
+ 698              	.L42:
+  76:../SM_LED/LedController.cpp **** 		return;
+ 699              	 .loc 2 76 0 is_stmt 1
+ 700 0028 0BE0     	 b .L41
+ 701              	.L43:
+  77:../SM_LED/LedController.cpp **** 
+  78:../SM_LED/LedController.cpp **** 	m_dutyCycle += alpha;
+ 702              	 .loc 2 78 0
+ 703 002a 7B68     	 ldr r3,[r7,#4]
+ 704 002c 9A68     	 ldr r2,[r3,#8]
+ 705 002e 3B68     	 ldr r3,[r7]
+ 706 0030 1A44     	 add r2,r2,r3
+ 707 0032 7B68     	 ldr r3,[r7,#4]
+ 708 0034 9A60     	 str r2,[r3,#8]
+  79:../SM_LED/LedController.cpp **** 	PWM_SetDutyCycle(&LED, m_dutyCycle);
+ 709              	 .loc 2 79 0
+ 710 0036 7B68     	 ldr r3,[r7,#4]
+ 711 0038 9B68     	 ldr r3,[r3,#8]
+ 712 003a 0348     	 ldr r0,.L45
+ 713 003c 1946     	 mov r1,r3
+ 714 003e FFF7FEFF 	 bl PWM_SetDutyCycle
+ 715              	.L41:
+  80:../SM_LED/LedController.cpp **** }
+ 716              	 .loc 2 80 0
+ 717 0042 0837     	 adds r7,r7,#8
+ 718              	.LCFI64:
+ 719              	 .cfi_def_cfa_offset 8
+ 720 0044 BD46     	 mov sp,r7
+ 721              	.LCFI65:
+ 722              	 .cfi_def_cfa_register 13
+ 723              	 
+ 724 0046 80BD     	 pop {r7,pc}
+ 725              	.L46:
+ 726              	 .align 2
+ 727              	.L45:
+ 728 0048 00000000 	 .word LED
+ 729              	 .cfi_endproc
+ 730              	.LFE244:
+ 732              	 .section .text._ZN14led_controller13LedController4stopEi,"ax",%progbits
+ 733              	 .align 2
+ 734              	 .global _ZN14led_controller13LedController4stopEi
+ 735              	 .thumb
+ 736              	 .thumb_func
+ 738              	_ZN14led_controller13LedController4stopEi:
+ 739              	.LFB245:
+  81:../SM_LED/LedController.cpp **** 
+  82:../SM_LED/LedController.cpp **** void led_controller::LedController::stop(int alpha = 0) {
+ 740              	 .loc 2 82 0
+ 741              	 .cfi_startproc
+ 742              	 
+ 743              	 
+ 744 0000 80B5     	 push {r7,lr}
+ 745              	.LCFI66:
+ 746              	 .cfi_def_cfa_offset 8
+ 747              	 .cfi_offset 7,-8
+ 748              	 .cfi_offset 14,-4
+ 749 0002 82B0     	 sub sp,sp,#8
+ 750              	.LCFI67:
+ 751              	 .cfi_def_cfa_offset 16
+ 752 0004 00AF     	 add r7,sp,#0
+ 753              	.LCFI68:
+ 754              	 .cfi_def_cfa_register 7
+ 755 0006 7860     	 str r0,[r7,#4]
+ 756 0008 3960     	 str r1,[r7]
+  83:../SM_LED/LedController.cpp **** 	m_dutyCycle = 0;
+ 757              	 .loc 2 83 0
+ 758 000a 7B68     	 ldr r3,[r7,#4]
+ 759 000c 0022     	 movs r2,#0
+ 760 000e 9A60     	 str r2,[r3,#8]
+  84:../SM_LED/LedController.cpp **** 	PWM_SetDutyCycle(&LED, m_dutyCycle);
+ 761              	 .loc 2 84 0
+ 762 0010 7B68     	 ldr r3,[r7,#4]
+ 763 0012 9B68     	 ldr r3,[r3,#8]
+ 764 0014 0348     	 ldr r0,.L48
+ 765 0016 1946     	 mov r1,r3
+ 766 0018 FFF7FEFF 	 bl PWM_SetDutyCycle
+  85:../SM_LED/LedController.cpp **** }
+ 767              	 .loc 2 85 0
+ 768 001c 0837     	 adds r7,r7,#8
+ 769              	.LCFI69:
+ 770              	 .cfi_def_cfa_offset 8
+ 771 001e BD46     	 mov sp,r7
+ 772              	.LCFI70:
+ 773              	 .cfi_def_cfa_register 13
+ 774              	 
+ 775 0020 80BD     	 pop {r7,pc}
+ 776              	.L49:
+ 777 0022 00BF     	 .align 2
+ 778              	.L48:
+ 779 0024 00000000 	 .word LED
+ 780              	 .cfi_endproc
+ 781              	.LFE245:
+ 783              	 .global _ZTVN14led_controller13LedControllerE
+ 784              	 .section .rodata._ZTVN14led_controller13LedControllerE,"a",%progbits
+ 785              	 .align 3
+ 788              	_ZTVN14led_controller13LedControllerE:
+ 789 0000 00000000 	 .word 0
+ 790 0004 00000000 	 .word 0
+ 791 0008 00000000 	 .word _ZN14led_controller13LedController20GetFunctionToInvockeERKi
+ 792              	 .weak _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE
+ 793 000c 00000000 	 .section .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE,"aG",%progbits,_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE,comdat
+ 794              	 .align 3
+ 797              	_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE:
+ 798 0000 00000000 	 .word 0
+ 799 0004 00000000 	 .word 0
+ 800 0008 00000000 	 .word _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi
+ 801              	 .weak _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE
+ 802 000c 00000000 	 .section .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE,"aG",%progbits,_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE,comdat
+ 803              	 .align 3
+ 806              	_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE:
+ 807 0000 00000000 	 .word 0
+ 808 0004 00000000 	 .word 0
+ 809 0008 00000000 	 .word _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi
+ 810              	 .weak _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE
+ 811 000c 00000000 	 .section .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE,"aG",%progbits,_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE,comdat
+ 812              	 .align 3
+ 815              	_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE:
+ 816 0000 00000000 	 .word 0
+ 817 0004 00000000 	 .word 0
+ 818 0008 00000000 	 .word _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi
+ 819              	 .weak _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE
+ 820 000c 00000000 	 .section .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE,"aG",%progbits,_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE,comdat
+ 821              	 .align 3
+ 824              	_ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE:
+ 825 0000 00000000 	 .word 0
+ 826 0004 00000000 	 .word 0
+ 827 0008 00000000 	 .word _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi
+ 828 000c 00000000 	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi,comdat
+ 829              	 .align 2
+ 830              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi
+ 831              	 .thumb
+ 832              	 .thumb_func
+ 834              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi:
+ 835              	.LFB246:
+  32:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 		public:
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			virtual void Caller(state_machine::StateMachine* sm, int data) {
+ 836              	 .loc 1 33 0
+ 837              	 .cfi_startproc
+ 838              	 
+ 839              	 
+ 840 0000 80B5     	 push {r7,lr}
+ 841              	.LCFI71:
+ 842              	 .cfi_def_cfa_offset 8
+ 843              	 .cfi_offset 7,-8
+ 844              	 .cfi_offset 14,-4
+ 845 0002 86B0     	 sub sp,sp,#24
+ 846              	.LCFI72:
+ 847              	 .cfi_def_cfa_offset 32
+ 848 0004 00AF     	 add r7,sp,#0
+ 849              	.LCFI73:
+ 850              	 .cfi_def_cfa_register 7
+ 851 0006 F860     	 str r0,[r7,#12]
+ 852 0008 B960     	 str r1,[r7,#8]
+ 853 000a 7A60     	 str r2,[r7,#4]
+ 854              	.LBB7:
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				SM *derived = static_cast<SM*> (sm);
+ 855              	 .loc 1 34 0
+ 856 000c BB68     	 ldr r3,[r7,#8]
+ 857 000e 7B61     	 str r3,[r7,#20]
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				(derived->*Func)(data);
+ 858              	 .loc 1 35 0
+ 859 0010 7869     	 ldr r0,[r7,#20]
+ 860 0012 7968     	 ldr r1,[r7,#4]
+ 861 0014 FFF7FEFF 	 bl _ZN14led_controller13LedController4stopEi
+ 862              	.LBE7:
+  36:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			}
+ 863              	 .loc 1 36 0
+ 864 0018 1837     	 adds r7,r7,#24
+ 865              	.LCFI74:
+ 866              	 .cfi_def_cfa_offset 8
+ 867 001a BD46     	 mov sp,r7
+ 868              	.LCFI75:
+ 869              	 .cfi_def_cfa_register 13
+ 870              	 
+ 871 001c 80BD     	 pop {r7,pc}
+ 872              	 .cfi_endproc
+ 873              	.LFE246:
+ 875 001e 00BF     	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi,comdat
+ 876              	 .align 2
+ 877              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi
+ 878              	 .thumb
+ 879              	 .thumb_func
+ 881              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi:
+ 882              	.LFB247:
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				SM *derived = static_cast<SM*> (sm);
+ 883              	 .loc 1 33 0
+ 884              	 .cfi_startproc
+ 885              	 
+ 886              	 
+ 887 0000 80B5     	 push {r7,lr}
+ 888              	.LCFI76:
+ 889              	 .cfi_def_cfa_offset 8
+ 890              	 .cfi_offset 7,-8
+ 891              	 .cfi_offset 14,-4
+ 892 0002 86B0     	 sub sp,sp,#24
+ 893              	.LCFI77:
+ 894              	 .cfi_def_cfa_offset 32
+ 895 0004 00AF     	 add r7,sp,#0
+ 896              	.LCFI78:
+ 897              	 .cfi_def_cfa_register 7
+ 898 0006 F860     	 str r0,[r7,#12]
+ 899 0008 B960     	 str r1,[r7,#8]
+ 900 000a 7A60     	 str r2,[r7,#4]
+ 901              	.LBB8:
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				(derived->*Func)(data);
+ 902              	 .loc 1 34 0
+ 903 000c BB68     	 ldr r3,[r7,#8]
+ 904 000e 7B61     	 str r3,[r7,#20]
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			}
+ 905              	 .loc 1 35 0
+ 906 0010 7869     	 ldr r0,[r7,#20]
+ 907 0012 7968     	 ldr r1,[r7,#4]
+ 908 0014 FFF7FEFF 	 bl _ZN14led_controller13LedController11changeLightEi
+ 909              	.LBE8:
+ 910              	 .loc 1 36 0
+ 911 0018 1837     	 adds r7,r7,#24
+ 912              	.LCFI79:
+ 913              	 .cfi_def_cfa_offset 8
+ 914 001a BD46     	 mov sp,r7
+ 915              	.LCFI80:
+ 916              	 .cfi_def_cfa_register 13
+ 917              	 
+ 918 001c 80BD     	 pop {r7,pc}
+ 919              	 .cfi_endproc
+ 920              	.LFE247:
+ 922 001e 00BF     	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi,comdat
+ 923              	 .align 2
+ 924              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi
+ 925              	 .thumb
+ 926              	 .thumb_func
+ 928              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi:
+ 929              	.LFB248:
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				SM *derived = static_cast<SM*> (sm);
+ 930              	 .loc 1 33 0
+ 931              	 .cfi_startproc
+ 932              	 
+ 933              	 
+ 934 0000 80B5     	 push {r7,lr}
+ 935              	.LCFI81:
+ 936              	 .cfi_def_cfa_offset 8
+ 937              	 .cfi_offset 7,-8
+ 938              	 .cfi_offset 14,-4
+ 939 0002 86B0     	 sub sp,sp,#24
+ 940              	.LCFI82:
+ 941              	 .cfi_def_cfa_offset 32
+ 942 0004 00AF     	 add r7,sp,#0
+ 943              	.LCFI83:
+ 944              	 .cfi_def_cfa_register 7
+ 945 0006 F860     	 str r0,[r7,#12]
+ 946 0008 B960     	 str r1,[r7,#8]
+ 947 000a 7A60     	 str r2,[r7,#4]
+ 948              	.LBB9:
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				(derived->*Func)(data);
+ 949              	 .loc 1 34 0
+ 950 000c BB68     	 ldr r3,[r7,#8]
+ 951 000e 7B61     	 str r3,[r7,#20]
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			}
+ 952              	 .loc 1 35 0
+ 953 0010 7869     	 ldr r0,[r7,#20]
+ 954 0012 7968     	 ldr r1,[r7,#4]
+ 955 0014 FFF7FEFF 	 bl _ZN14led_controller13LedController5startEi
+ 956              	.LBE9:
+ 957              	 .loc 1 36 0
+ 958 0018 1837     	 adds r7,r7,#24
+ 959              	.LCFI84:
+ 960              	 .cfi_def_cfa_offset 8
+ 961 001a BD46     	 mov sp,r7
+ 962              	.LCFI85:
+ 963              	 .cfi_def_cfa_register 13
+ 964              	 
+ 965 001c 80BD     	 pop {r7,pc}
+ 966              	 .cfi_endproc
+ 967              	.LFE248:
+ 969 001e 00BF     	 .section .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi,"axG",%progbits,_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi,comdat
+ 970              	 .align 2
+ 971              	 .weak _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi
+ 972              	 .thumb
+ 973              	 .thumb_func
+ 975              	_ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi:
+ 976              	.LFB249:
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				SM *derived = static_cast<SM*> (sm);
+ 977              	 .loc 1 33 0
+ 978              	 .cfi_startproc
+ 979              	 
+ 980              	 
+ 981 0000 80B5     	 push {r7,lr}
+ 982              	.LCFI86:
+ 983              	 .cfi_def_cfa_offset 8
+ 984              	 .cfi_offset 7,-8
+ 985              	 .cfi_offset 14,-4
+ 986 0002 86B0     	 sub sp,sp,#24
+ 987              	.LCFI87:
+ 988              	 .cfi_def_cfa_offset 32
+ 989 0004 00AF     	 add r7,sp,#0
+ 990              	.LCFI88:
+ 991              	 .cfi_def_cfa_register 7
+ 992 0006 F860     	 str r0,[r7,#12]
+ 993 0008 B960     	 str r1,[r7,#8]
+ 994 000a 7A60     	 str r2,[r7,#4]
+ 995              	.LBB10:
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 				(derived->*Func)(data);
+ 996              	 .loc 1 34 0
+ 997 000c BB68     	 ldr r3,[r7,#8]
+ 998 000e 7B61     	 str r3,[r7,#20]
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED\StateMachine.h **** 			}
+ 999              	 .loc 1 35 0
+ 1000 0010 7869     	 ldr r0,[r7,#20]
+ 1001 0012 7968     	 ldr r1,[r7,#4]
+ 1002 0014 FFF7FEFF 	 bl _ZN14led_controller13LedController4idleEi
+ 1003              	.LBE10:
+ 1004              	 .loc 1 36 0
+ 1005 0018 1837     	 adds r7,r7,#24
+ 1006              	.LCFI89:
+ 1007              	 .cfi_def_cfa_offset 8
+ 1008 001a BD46     	 mov sp,r7
+ 1009              	.LCFI90:
+ 1010              	 .cfi_def_cfa_register 13
+ 1011              	 
+ 1012 001c 80BD     	 pop {r7,pc}
+ 1013              	 .cfi_endproc
+ 1014              	.LFE249:
+ 1016 001e 00BF     	 .text
+ 1017              	.Letext0:
+ 1018              	 .file 3 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1019              	 .file 4 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1020              	 .file 5 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/CMSIS/Infineon/XMC4500_series/Include/XMC4500.h"
+ 1021              	 .file 6 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc_gpio.h"
+ 1022              	 .file 7 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 1023              	 .file 8 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 1024              	 .file 9 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc4_scu.h"
+ 1025              	 .file 10 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 1026              	 .file 11 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/PWM/pwm.h"
+ 1027              	 .file 12 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/SM_LED/LedController.h"
+ 1028              	 .file 13 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/CMSIS/Include/core_cm4.h"
+ 1029              	 .file 14 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 1030              	 .file 15 "<built-in>"
+ 1031              	 .file 16 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/PWM/PWM_Extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 LedController.cpp
+    {standard input}:24     .rodata._ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE:00000000 _ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE
+    {standard input}:21     .rodata._ZN14led_controller13LedController27ON_CHANGE_LIGHT_TRANSITIONSE:00000000 $d
+    {standard input}:34     .rodata._ZN14led_controller13LedController19ON_STOP_TRANSITIONSE:00000000 _ZN14led_controller13LedController19ON_STOP_TRANSITIONSE
+    {standard input}:31     .rodata._ZN14led_controller13LedController19ON_STOP_TRANSITIONSE:00000000 $d
+    {standard input}:40     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev:00000000 $t
+    {standard input}:45     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev
+    {standard input}:87     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev:0000001c $d
+    {standard input}:824    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE:00000000 _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE
+    {standard input}:45     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC1Ev
+    {standard input}:94     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev:00000000 $t
+    {standard input}:99     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev
+    {standard input}:140    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev:0000001c $d
+    {standard input}:815    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE:00000000 _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE
+    {standard input}:99     .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC1Ev
+    {standard input}:147    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev:00000000 $t
+    {standard input}:152    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev
+    {standard input}:193    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev:0000001c $d
+    {standard input}:806    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE:00000000 _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE
+    {standard input}:152    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC1Ev
+    {standard input}:200    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev:00000000 $t
+    {standard input}:205    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev
+    {standard input}:246    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev:0000001c $d
+    {standard input}:797    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE:00000000 _ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE
+    {standard input}:205    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC2Ev:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC1Ev
+    {standard input}:253    .text._ZN14led_controller13LedControllerC2Ev:00000000 $t
+    {standard input}:258    .text._ZN14led_controller13LedControllerC2Ev:00000000 _ZN14led_controller13LedControllerC2Ev
+    {standard input}:339    .text._ZN14led_controller13LedControllerC2Ev:00000078 $d
+    {standard input}:788    .rodata._ZTVN14led_controller13LedControllerE:00000000 _ZTVN14led_controller13LedControllerE
+    {standard input}:258    .text._ZN14led_controller13LedControllerC2Ev:00000000 _ZN14led_controller13LedControllerC1Ev
+    {standard input}:346    .text._ZN14led_controller13LedController7LightUpEi:00000000 $t
+    {standard input}:351    .text._ZN14led_controller13LedController7LightUpEi:00000000 _ZN14led_controller13LedController7LightUpEi
+    {standard input}:395    .text._ZN14led_controller13LedController7LightUpEi:0000002c $d
+    {standard input}:400    .text._ZN14led_controller13LedController9LightDownEi:00000000 $t
+    {standard input}:405    .text._ZN14led_controller13LedController9LightDownEi:00000000 _ZN14led_controller13LedController9LightDownEi
+    {standard input}:453    .text._ZN14led_controller13LedController9LightDownEi:00000034 $d
+    {standard input}:458    .text._ZN14led_controller13LedController4StopEv:00000000 $t
+    {standard input}:463    .text._ZN14led_controller13LedController4StopEv:00000000 _ZN14led_controller13LedController4StopEv
+    {standard input}:511    .text._ZN14led_controller13LedController4StopEv:00000034 $d
+    {standard input}:516    .text._ZN14led_controller13LedController20GetFunctionToInvockeERKi:00000000 $t
+    {standard input}:521    .text._ZN14led_controller13LedController20GetFunctionToInvockeERKi:00000000 _ZN14led_controller13LedController20GetFunctionToInvockeERKi
+    {standard input}:566    .text._ZN14led_controller13LedController4idleEi:00000000 $t
+    {standard input}:571    .text._ZN14led_controller13LedController4idleEi:00000000 _ZN14led_controller13LedController4idleEi
+    {standard input}:607    .text._ZN14led_controller13LedController5startEi:00000000 $t
+    {standard input}:612    .text._ZN14led_controller13LedController5startEi:00000000 _ZN14led_controller13LedController5startEi
+    {standard input}:653    .text._ZN14led_controller13LedController5startEi:00000024 $d
+    {standard input}:658    .text._ZN14led_controller13LedController11changeLightEi:00000000 $t
+    {standard input}:663    .text._ZN14led_controller13LedController11changeLightEi:00000000 _ZN14led_controller13LedController11changeLightEi
+    {standard input}:728    .text._ZN14led_controller13LedController11changeLightEi:00000048 $d
+    {standard input}:733    .text._ZN14led_controller13LedController4stopEi:00000000 $t
+    {standard input}:738    .text._ZN14led_controller13LedController4stopEi:00000000 _ZN14led_controller13LedController4stopEi
+    {standard input}:779    .text._ZN14led_controller13LedController4stopEi:00000024 $d
+    {standard input}:785    .rodata._ZTVN14led_controller13LedControllerE:00000000 $d
+    {standard input}:794    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEE:00000000 $d
+    {standard input}:834    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi
+    {standard input}:803    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEE:00000000 $d
+    {standard input}:881    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi
+    {standard input}:812    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEE:00000000 $d
+    {standard input}:928    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi
+    {standard input}:821    .rodata._ZTVN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEE:00000000 $d
+    {standard input}:975    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi
+    {standard input}:829    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEE6CallerEPNS_12StateMachineEi:00000000 $t
+    {standard input}:876    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEE6CallerEPNS_12StateMachineEi:00000000 $t
+    {standard input}:923    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEE6CallerEPNS_12StateMachineEi:00000000 $t
+    {standard input}:970    .text._ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEE6CallerEPNS_12StateMachineEi:00000000 $t
+                     .debug_frame:00000010 $d
+                           .group:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4idleEiEEEC5Ev
+                           .group:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_5startEiEEEC5Ev
+                           .group:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_11changeLightEiEEEC5Ev
+                           .group:00000000 _ZN13state_machine12state_action11StateActionIN14led_controller13LedControllerEXadL_ZNS3_4stopEiEEEC5Ev
+
+UNDEFINED SYMBOLS
+_ZN13state_machine12StateMachineC2Ev
+_ZN13state_machine12StateMachine15GetCurrentStateEv
+_ZN13state_machine12StateMachine12EventHandlerEii
+_ZN13state_machine12StateMachine15SetCurrentStateEi
+PWM_SetDutyCycle
+LED

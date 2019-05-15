@@ -1,0 +1,1724 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.cpp"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_GPIO_GetInput,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_GPIO_GetInput:
+  25              	.LFB174:
+  26              	 .file 1 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc_gpio.h"
+   1:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+   2:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @file xmc_gpio.h
+   3:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @date 2015-06-20
+   4:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   5:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @cond
+   6:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+   7:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMClib v2.1.18 - XMC Peripheral Driver Library 
+   8:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   9:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Copyright (c) 2015-2018, Infineon Technologies AG
+  10:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * All rights reserved.                        
+  11:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                             
+  12:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * following conditions are met:   
+  14:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  15:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer.                        
+  17:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  18:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  21:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  24:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  32:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  36:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Change History
+  37:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * --------------
+  38:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  39:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-02-20:
+  40:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Initial draft<br>
+  41:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Documentation improved <br>
+  42:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *      
+  43:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-06-20:
+  44:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  45:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  46:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @endcond
+  47:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  48:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  49:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  50:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #ifndef XMC_GPIO_H
+  51:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_H
+  52:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  53:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  54:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * HEADER FILES
+  55:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  56:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  57:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc_common.h"
+  58:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  59:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  60:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup XMClib XMC Peripheral Library
+  61:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @{
+  62:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  63:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  64:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  65:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup GPIO
+  66:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @brief General Purpose Input Output (GPIO) driver for the XMC microcontroller family.
+  67:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  68:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * GPIO driver provide a generic and very flexible software interface for all standard digital I/O 
+  69:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Each port slice has individual interfaces for the operation as General Purpose I/O and it furthe
+  70:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * connectivity to the on-chip periphery and the control for the pad characteristics. 
+  71:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  72:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * The driver is divided into Input and Output mode.
+  73:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  74:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Input mode features:
+  75:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Configuration structure XMC_GPIO_CONFIG_t and initialization function XMC_GPIO_Init()
+  76:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of weak pull-up or pull-down device. Configuration structure XMC_GPIO_MO
+  77:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+  78:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of input hysteresis. XMC_GPIO_SetInputHysteresis()
+  79:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  80:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  81:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  82:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Output mode features:
+  83:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of push pull/open drain and Alternate output. Configuration structure XM
+  84:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+  85:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of pad driver strength. Configuration structure XMC_GPIO_OUTPUT_STRENGTH
+  86:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  87:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  88:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of initial output level. Configuration structure XMC_GPIO_OUTPUT_LEVEL_t
+  89:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  90:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *@{
+  91:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  92:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  
+  93:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  94:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * MACROS
+  95:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  96:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  97:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Pos PORT0_IOCR0_PC0_Pos
+  98:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Msk PORT0_IOCR0_PC0_Msk
+  99:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 100:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Size 				(8U)
+ 101:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 											
+ 102:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 103:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_OUTPUT_LEVEL(level) ((level == XMC_GPIO_OUTPUT_LEVEL_LOW) || \
+ 104:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****                                             (level == XMC_GPIO_OUTPUT_LEVEL_HIGH))
+ 105:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 106:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_HWCTRL(hwctrl) ((hwctrl == XMC_GPIO_HWCTRL_DISABLED) || \
+ 107:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL1) || \
+ 108:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL2))                    
+ 109:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 110:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 111:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * ENUMS
+ 112:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 113:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 114:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 115:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 116:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines output level of a pin. Use type \a XMC_GPIO_OUTPUT_LEVEL_t for this enum.
+ 117:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 118:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_OUTPUT_LEVEL
+ 119:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 120:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_LOW  = 0x10000U, /**<  Reset bit */
+ 121:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_HIGH = 0x1U, 	/**< Set bit  */
+ 122:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_OUTPUT_LEVEL_t;
+ 123:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 124:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 125:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines direct hardware control characteristics of the pin . Use type \a XMC_GPIO_HWCTRL_t for t
+ 126:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 127:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_HWCTRL
+ 128:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 129:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_DISABLED     = 0x0U, /**<  Software control only */
+ 130:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL1  = 0x1U, /**<  HWI0/HWO0 control path can override the software confi
+ 131:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL2  = 0x2U  /**<  HWI1/HWO1 control path can override the software confi
+ 132:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_HWCTRL_t;
+ 133:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 134:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 135:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEVICE FAMILY EXTENSIONS
+ 136:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 137:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 138:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  #if UC_FAMILY == XMC1
+ 139:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc1_gpio.h"
+ 140:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #elif UC_FAMILY == XMC4
+ 141:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc4_gpio.h"
+ 142:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #else
+ 143:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #error "xmc_gpio.h: family device not supported"
+ 144:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 145:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 146:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 147:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * API PROTOTYPES
+ 148:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 149:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 150:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #ifdef __cplusplus
+ 151:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** extern "C" {
+ 152:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 153:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 154:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 155:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 156:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	  Constant pointer pointing to GPIO port, to access port registers like Pn_OUT,Pn_O
+ 157:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	  Port pin number.
+ 158:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  config GPIO configuration data structure. Refer data structure @ref XMC_GPIO_CONFIG_t fo
+ 159:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 160:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 161:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 162:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 163:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+ 164:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,hysteresis, push pull
+ 165:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for a selected \a po
+ 166:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \a config provides selected I/O settings. It configures hardware registers Pn_IOCR,Pn_OUT, Pn_OM
+ 167:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 168:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+ 169:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,push pull /open drain
+ 170:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for selected \a port
+ 171:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * It configures hardware registers Pn_IOCR,Pn_OUT,Pn_OMR,Pn_PDISC and Pn_PDR.\n
+ 172:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 173:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 174:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 175:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 176:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 177:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 178:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * This API is called in definition of DAVE_init by code generation and therefore should not be exp
+ 179:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * for the normal operation. Use other APIs only after DAVE_init is called successfully (returns DA
+ 180:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 181:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 182:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 183:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 184:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 185:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_Init(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_CONFIG_t *const c
+ 186:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 187:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 188:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 189:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	Constant pointer pointing to GPIO port, to access hardware register Pn_IOCR.
+ 190:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 191:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  mode input / output functionality selection. Refer @ref XMC_GPIO_MODE_t for valid values
+ 192:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 193:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 194:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 195:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 196:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets digital input and output driver functionality and characteristics of a GPIO port pin. It co
+ 197:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * registers Pn_IOCR. \a mode is initially configured during initialization in XMC_GPIO_Init(). Cal
+ 198:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * the port direction functionality as needed later in the program.
+ 199:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 200:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 201:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 202:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 203:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 204:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 205:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetMode(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_MODE_t mode);
+ 206:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 207:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 208:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 209:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 210:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	 Constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 211:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	 Port pin number.
+ 212:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  level output level selection. Refer @ref XMC_GPIO_OUTPUT_LEVEL_t for valid values.
+ 213:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 214:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 215:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 216:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 217:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Set port pin output level to high or low.It configures hardware registers Pn_OMR.\a level is ini
+ 218:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * configured during initialization in XMC_GPIO_Init(). Call this API to alter output level as need
+ 219:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 220:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 221:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 222:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 223:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 224:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 225:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 226:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 227:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 228:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 229:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLevel(XMC_GPIO_PORT_t *const port, const uint8_t pin, const 
+ 230:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 231:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 232:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid output level", XMC_GPIO_CHECK_OUTPUT_LEVEL(level));
+ 233:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   
+ 234:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)level << pin;
+ 235:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 236:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 237:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 238:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 239:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 240:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 241:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 242:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 243:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 244:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 245:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  Sets port pin output to high. It configures hardware registers Pn_OMR.
+ 246:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 247:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  \par<b>Related APIs:</b><BR>
+ 248:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputLow()
+ 249:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 250:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 251:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().\n
+ 252:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 253:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 254:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 255:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 256:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 257:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 258:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputHigh: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 259:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 260:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)0x1U << pin;
+ 261:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 262:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 263:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 264:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 265:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 266:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	port pin number.
+ 267:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 268:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return  None
+ 269:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 270:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 271:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets port pin output to low. It configures hardware registers Pn_OMR.\n
+ 272:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 273:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>>
+ 274:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh()
+ 275:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 276:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 277:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 278:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 279:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 280:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 281:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 282:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLow(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 283:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 284:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLow: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 285:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 286:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10000U << pin;
+ 287:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 288:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 289:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 290:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 291:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 292:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  port pin number.
+ 293:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 294:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 295:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 296:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 297:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Configures port pin output to Toggle. It configures hardware registers Pn_OMR.
+ 298:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 299:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 300:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 301:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 302:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 303:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode(). Regis
+ 304:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * and does not contain any flip-flop. A read action delivers the value of 0.
+ 305:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 306:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 307:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 308:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_ToggleOutput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 309:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 310:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_ToggleOutput: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 311:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 312:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10001U << pin;
+ 313:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 314:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 315:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 316:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 317:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_IN.
+ 318:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  Port pin number.
+ 319:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 320:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return uint32_t pin logic level status.
+ 321:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 322:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 323:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 324:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 325:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 326:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * None
+ 327:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 328:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 329:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to input mode using XMC_GPIO_SetMode().
+ 330:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 331:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 332:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 333:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE uint32_t XMC_GPIO_GetInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 334:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** {
+  27              	 .loc 1 334 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 83B0     	 sub sp,sp,#12
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+  43 0008 0B46     	 mov r3,r1
+  44 000a FB70     	 strb r3,[r7,#3]
+ 335:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_GetInput: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 336:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 337:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h ****   return (((port->IN) >> pin) & 0x1U);
+  45              	 .loc 1 337 0
+  46 000c 7B68     	 ldr r3,[r7,#4]
+  47 000e 5A6A     	 ldr r2,[r3,#36]
+  48 0010 FB78     	 ldrb r3,[r7,#3]
+  49 0012 22FA03F3 	 lsr r3,r2,r3
+  50 0016 03F00103 	 and r3,r3,#1
+ 338:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc\xmc_gpio.h **** }
+  51              	 .loc 1 338 0
+  52 001a 1846     	 mov r0,r3
+  53 001c 0C37     	 adds r7,r7,#12
+  54              	.LCFI3:
+  55              	 .cfi_def_cfa_offset 4
+  56 001e BD46     	 mov sp,r7
+  57              	.LCFI4:
+  58              	 .cfi_def_cfa_register 13
+  59              	 
+  60 0020 5DF8047B 	 ldr r7,[sp],#4
+  61              	.LCFI5:
+  62              	 .cfi_restore 7
+  63              	 .cfi_def_cfa_offset 0
+  64 0024 7047     	 bx lr
+  65              	 .cfi_endproc
+  66              	.LFE174:
+  68 0026 00BF     	 .section .text.DIGITAL_IO_GetInput,"ax",%progbits
+  69              	 .align 2
+  70              	 .thumb
+  71              	 .thumb_func
+  73              	DIGITAL_IO_GetInput:
+  74              	.LFB230:
+  75              	 .file 2 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO/digital_io.h"
+   1:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /*
+   2:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   3:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @file digital_io.h
+   4:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @date 2016-07-08
+   5:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   6:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * NOTE:
+   7:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * This file is generated by DAVE. Any manual modification done to this file will be lost when the 
+   8:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   9:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @cond
+  10:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  11:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DIGITAL_IO v4.0.16 - The DIGITAL_IO APP is used to configure a port pin as digital Input/Output.
+  12:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  13:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  14:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * All rights reserved.
+  15:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  16:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  17:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * following conditions are met:
+  18:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  19:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  20:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   disclaimer.
+  21:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  22:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  23:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   following disclaimer in the documentation and/or other materials provided with the distributio
+  24:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  25:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  26:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   products derived from this software without specific prior written permission.
+  27:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  28:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  29:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  30:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  31:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  32:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  33:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  34:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  35:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  36:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  37:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * with Infineon Technologies AG (dave@infineon.com).
+  38:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  39:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  40:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Change History
+  41:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * --------------
+  42:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  43:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-02-16
+  44:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Initial version
+  45:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  46:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-04-22
+  47:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - XMC_ASSERT is added in static inline functions.<br>
+  48:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  49:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-06-20
+  50:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Version check added for XMCLib dependency.<br>
+  51:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  52:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-12-22
+  53:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Added hardware controlled IO feature.
+  54:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2016-07-08:
+  55:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Fixed incorrect case for an included header.<br>
+  56:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  57:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @endcond
+  58:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  59:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  */
+  60:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  61:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  62:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * HEADER FILES
+  63:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  64:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  65:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifndef DIGITAL_IO_H
+  66:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_H
+  67:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  68:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #include <xmc_gpio.h>
+  69:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #include <DAVE_Common.h>
+  70:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #include "digital_io_conf.h"
+  71:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  72:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  73:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * MACROS
+  74:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  75:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #if (!((XMC_LIB_MAJOR_VERSION == 2U) && \
+  76:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****        (XMC_LIB_MINOR_VERSION >= 0U) && \
+  77:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****        (XMC_LIB_PATCH_VERSION >= 0U)))
+  78:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #error "DIGITAL_IO requires XMC Peripheral Library v2.0.0 or higher"
+  79:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+  80:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  81:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  /*************************************************************************************************
+  82:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * ENUMS
+  83:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  84:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  85:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  86:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_enumerations
+  87:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+  88:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  89:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  90:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  91:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization status of DIGITAL_IO APP.
+  92:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  93:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef enum DIGITAL_IO_STATUS
+  94:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+  95:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_OK = 0U,/**< 0=Status OK */
+  96:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_FAILURE = 1U/**< 1=Status Failed */
+  97:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_STATUS_t;
+  98:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  99:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 100:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 101:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 102:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 103:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 104:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DATA STRUCTURES
+ 105:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 106:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 107:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_datastructures
+ 108:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 109:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 110:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 111:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 112:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization data structure of DIGITAL_IO APP
+ 113:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 114:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef struct DIGITAL_IO
+ 115:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 116:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_PORT_t *const gpio_port;             /**< port number */
+ 117:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_CONFIG_t gpio_config;          /**< mode, initial output level and pad driver stre
+ 118:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   const uint8_t gpio_pin;                       /**< pin number */
+ 119:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_HWCTRL_t hwctrl;               /**< Hardware port control */
+ 120:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_t;
+ 121:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 122:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 123:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 124:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 125:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 126:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 127:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 128:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 129:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  * API Prototypes
+ 130:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 131:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 132:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 133:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifdef __cplusplus
+ 134:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** extern "C" {
+ 135:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+ 136:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 137:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 138:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_apidoc
+ 139:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 140:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 141:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 142:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 143:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 144:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 145:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Get DIGITAL_IO APP version
+ 146:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DAVE_APP_VERSION_t APP version information (major, minor and patch number)
+ 147:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 148:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description: </b><br>
+ 149:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * The function can be used to check application software compatibility with a
+ 150:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * specific version of the APP.
+ 151:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 152:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 153:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 154:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 155:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>
+ 156:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 157:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 158:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 159:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t init_status;
+ 160:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_APP_VERSION_t version;
+ 161:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 162:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // Initialize DIGITAL_IO APP:
+ 163:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // DIGITAL_IO_Init() is called from within DAVE_Init().
+ 164:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   init_status = DAVE_Init();
+ 165:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(init_status == DAVE_STATUS_SUCCESS)
+ 166:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 167:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     version = DIGITAL_IO_GetAppVersion();
+ 168:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     if (version.major != 4U) {
+ 169:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Probably, not the right version.
+ 170:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 171:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 172:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 173:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // More code here
+ 174:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1) {
+ 175:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 176:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 177:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     return (1);
+ 178:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 179:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @endcode<BR>
+ 180:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 181:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 182:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** DAVE_APP_VERSION_t DIGITAL_IO_GetAppVersion(void);
+ 183:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 184:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 185:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 186:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to initialize the port pin as per UI settings.
+ 187:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 188:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DIGITAL_IO_STATUS_t DIGITAL_IO APP status. Refer @ref DIGITAL_IO_STATUS_t structure for d
+ 189:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 190:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 191:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function initializes GPIO port registers IOCR,PDISC,OMR,PDR/PHCR to configure pin direction,
+ 192:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * and pad driver strength/hysteresis.
+ 193:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 194:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 195:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * None
+ 196:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 197:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 198:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 199:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 200:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 201:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 202:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 203:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 204:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 205:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 206:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 207:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 208:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 209:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 210:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 211:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 212:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 213:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 214:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 215:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 216:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 217:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 218:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 219:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return 1U;
+ 220:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 221:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 222:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 223:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 224:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** DIGITAL_IO_STATUS_t DIGITAL_IO_Init(const DIGITAL_IO_t *const handler);
+ 225:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 226:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 227:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 228:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to set port pin high.
+ 229:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 230:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 231:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 232:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 233:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to high level
+ 234:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 235:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 236:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  DIGITAL_IO_SetOutputLow()
+ 237:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 238:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 239:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 240:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 241:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 242:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 243:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 244:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 245:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 246:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 247:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 248:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 249:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 250:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 251:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 252:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 253:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 254:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 255:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 256:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 257:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+ 258:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 259:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 260:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Add application code here
+ 261:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 262:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 263:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 264:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 265:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 266:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 267:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 268:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputHigh(const DIGITAL_IO_t *const handler)
+ 269:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 270:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputHigh: handler null pointer", handler != NULL);
+ 271:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputHigh(handler->gpio_port, handler->gpio_pin);
+ 272:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 273:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 274:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 275:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to reset port pin.
+ 276:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 277:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 278:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 279:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 280:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to low level.
+ 281:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 282:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 283:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * DIGITAL_IO_SetOutputHigh()
+ 284:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 285:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 286:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 287:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 288:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  int main(void)
+ 289:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  {
+ 290:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DAVE_STATUS_t status;
+ 291:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_I
+ 292:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    if(status == DAVE_STATUS_SUCCESS)
+ 293:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 294:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG("DAVE Apps initialization success\n");
+ 295:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 296:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    else
+ 297:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 298:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 299:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      while(1U)
+ 300:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      {
+ 301:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      }
+ 302:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 303:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    //Placeholder for user application code. The while loop below can be replaced with user applic
+ 304:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+ 305:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    while(1U)
+ 306:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 307:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      // Add application code here
+ 308:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 309:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 310:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 311:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 312:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 313:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 314:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 315:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputLow(const DIGITAL_IO_t *const handler)
+ 316:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 317:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputLow: handler null pointer", handler != NULL);
+ 318:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputLow(handler->gpio_port,handler->gpio_pin);
+ 319:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 320:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 321:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 322:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to Toggle port pin.
+ 323:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 324:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 325:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 326:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 327:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to toggle port pin.
+ 328:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 329:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 330:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * DIGITAL_IO_SetOutputLow(), DIGITAL_IO_SetOutputHigh()
+ 331:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 332:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 333:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 334:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 335:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 336:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 337:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 338:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 339:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   uint32_t delay_count;;
+ 340:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 341:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 342:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 343:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 344:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 345:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 346:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 347:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 348:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      while(1U)
+ 349:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      {
+ 350:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      }
+ 351:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 352:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 353:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 354:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 355:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0); //toggles : 1 -> 0 (if initial output level is logic
+ 356:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      //Add application code here
+ 357:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      for(delay_count = 0;delay_count<0xfffff;delay_count++);
+ 358:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0); //toggles : 0 -> 1
+ 359:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      //Add application code here
+ 360:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *      for(delay_count = 0;delay_count<0xfffff;delay_count++);
+ 361:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 362:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 363:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 364:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 365:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 366:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 367:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_ToggleOutput(const DIGITAL_IO_t *const handler)
+ 368:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 369:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_ToggleOutput: handler null pointer", handler != NULL);
+ 370:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_ToggleOutput(handler->gpio_port, handler->gpio_pin);
+ 371:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 372:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 373:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 374:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to read input level of port pin.
+ 375:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 376:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return uint32_t input logic level. Range:0-1
+ 377:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 378:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 379:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 380:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 381:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 382:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  None
+ 383:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 384:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 385:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 386:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include <DAVE.h>//Declarations from DAVE Code Generation (includes SFR declaration)
+ 387:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 388:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 389:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 390:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   uint32_t pin_status;
+ 391:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();   // (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_
+ 392:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 393:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 394:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 395:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 396:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 397:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 398:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 399:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 400:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 401:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 402:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 403:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 404:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 405:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 406:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     pin_status = DIGITAL_IO_GetInput(&DIGITAL_IO_0);
+ 407:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     if(pin_status == 1)
+ 408:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 409:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *       // Add application code here
+ 410:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 411:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     else
+ 412:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 413:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *       // Add application code here
+ 414:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 415:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 416:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 417:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 418:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 419:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 420:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 421:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE uint32_t DIGITAL_IO_GetInput(const DIGITAL_IO_t *const handler)
+ 422:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+  76              	 .loc 2 422 0
+  77              	 .cfi_startproc
+  78              	 
+  79              	 
+  80 0000 80B5     	 push {r7,lr}
+  81              	.LCFI6:
+  82              	 .cfi_def_cfa_offset 8
+  83              	 .cfi_offset 7,-8
+  84              	 .cfi_offset 14,-4
+  85 0002 82B0     	 sub sp,sp,#8
+  86              	.LCFI7:
+  87              	 .cfi_def_cfa_offset 16
+  88 0004 00AF     	 add r7,sp,#0
+  89              	.LCFI8:
+  90              	 .cfi_def_cfa_register 7
+  91 0006 7860     	 str r0,[r7,#4]
+ 423:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_GetInput: handler null pointer", handler != NULL);
+ 424:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h ****   return XMC_GPIO_GetInput(handler->gpio_port, handler->gpio_pin);
+  92              	 .loc 2 424 0
+  93 0008 7B68     	 ldr r3,[r7,#4]
+  94 000a 1A68     	 ldr r2,[r3]
+  95 000c 7B68     	 ldr r3,[r7,#4]
+  96 000e 1B7C     	 ldrb r3,[r3,#16]
+  97 0010 1046     	 mov r0,r2
+  98 0012 1946     	 mov r1,r3
+  99 0014 FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 100 0018 0346     	 mov r3,r0
+ 425:C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 101              	 .loc 2 425 0
+ 102 001a 1846     	 mov r0,r3
+ 103 001c 0837     	 adds r7,r7,#8
+ 104              	.LCFI9:
+ 105              	 .cfi_def_cfa_offset 8
+ 106 001e BD46     	 mov sp,r7
+ 107              	.LCFI10:
+ 108              	 .cfi_def_cfa_register 13
+ 109              	 
+ 110 0020 80BD     	 pop {r7,pc}
+ 111              	 .cfi_endproc
+ 112              	.LFE230:
+ 114 0022 00BF     	 .section .text._ZL20__gthread_key_deletei,"ax",%progbits
+ 115              	 .align 2
+ 116              	 .thumb
+ 117              	 .thumb_func
+ 119              	_ZL20__gthread_key_deletei:
+ 120              	.LFB612:
+ 121              	 .file 3 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\arm-none-eabi\\armv7e-m\\softfp\\bits\\gthr-default.h"
+   1:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Threads compatibility routines for libgcc2 and libobjc.  */
+   2:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Compile this one with gcc.  */
+   3:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Copyright (C) 1997-2014 Free Software Foundation, Inc.
+   4:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+   5:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** This file is part of GCC.
+   6:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+   7:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** GCC is free software; you can redistribute it and/or modify it under
+   8:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** the terms of the GNU General Public License as published by the Free
+   9:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** Software Foundation; either version 3, or (at your option) any later
+  10:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** version.
+  11:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  12:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** GCC is distributed in the hope that it will be useful, but WITHOUT ANY
+  13:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  14:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+  15:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** for more details.
+  16:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  17:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** Under Section 7 of GPL version 3, you are granted additional
+  18:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** permissions described in the GCC Runtime Library Exception, version
+  19:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 3.1, as published by the Free Software Foundation.
+  20:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  21:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** You should have received a copy of the GNU General Public License and
+  22:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** a copy of the GCC Runtime Library Exception along with this program;
+  23:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  24:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** <http://www.gnu.org/licenses/>.  */
+  25:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  26:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #ifndef _GLIBCXX_GCC_GTHR_SINGLE_H
+  27:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define _GLIBCXX_GCC_GTHR_SINGLE_H
+  28:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  29:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Just provide compatibility for mutex handling.  */
+  30:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  31:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** typedef int __gthread_key_t;
+  32:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** typedef int __gthread_once_t;
+  33:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** typedef int __gthread_mutex_t;
+  34:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** typedef int __gthread_recursive_mutex_t;
+  35:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  36:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define __GTHREAD_ONCE_INIT 0
+  37:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define __GTHREAD_MUTEX_INIT 0
+  38:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define __GTHREAD_MUTEX_INIT_FUNCTION(mx)
+  39:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define __GTHREAD_RECURSIVE_MUTEX_INIT 0
+  40:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  41:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #define _GLIBCXX_UNUSED __attribute__((unused))
+  42:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  43:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #ifdef _LIBOBJC
+  44:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  45:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Thread local storage for a single thread */
+  46:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static void *thread_local_storage = NULL;
+  47:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  48:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Backend initialization functions */
+  49:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  50:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Initialize the threads subsystem.  */
+  51:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+  52:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_init_thread_system (void)
+  53:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  54:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support available */
+  55:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return -1;
+  56:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  57:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  58:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Close the threads subsystem.  */
+  59:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+  60:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_close_thread_system (void)
+  61:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  62:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support available */
+  63:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return -1;
+  64:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  65:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  66:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Backend thread functions */
+  67:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  68:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Create a new thread of execution.  */
+  69:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline objc_thread_t
+  70:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_detach (void (* func)(void *), void * arg _GLIBCXX_UNUSED)
+  71:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  72:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support available */
+  73:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return NULL;
+  74:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  75:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  76:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Set the current thread's priority.  */
+  77:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+  78:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_set_priority (int priority _GLIBCXX_UNUSED)
+  79:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  80:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support available */
+  81:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return -1;
+  82:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  83:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  84:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Return the current thread's priority.  */
+  85:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+  86:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_get_priority (void)
+  87:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  88:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return OBJC_THREAD_INTERACTIVE_PRIORITY;
+  89:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  90:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  91:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Yield our process time to another thread.  */
+  92:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline void
+  93:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_yield (void)
+  94:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+  95:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return;
+  96:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+  97:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+  98:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Terminate the current thread.  */
+  99:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 100:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_exit (void)
+ 101:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 102:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support available */
+ 103:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* Should we really exit the program */
+ 104:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* exit (&__objc_thread_exit_status); */
+ 105:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return -1;
+ 106:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 107:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 108:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Returns an integer value which uniquely describes a thread.  */
+ 109:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline objc_thread_t
+ 110:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_id (void)
+ 111:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 112:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* No thread support, use 1.  */
+ 113:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return (objc_thread_t) 1;
+ 114:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 115:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 116:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Sets the thread's local storage pointer.  */
+ 117:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 118:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_set_data (void *value)
+ 119:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 120:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   thread_local_storage = value;
+ 121:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 122:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 123:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 124:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Returns the thread's local storage pointer.  */
+ 125:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline void *
+ 126:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_thread_get_data (void)
+ 127:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 128:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return thread_local_storage;
+ 129:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 130:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 131:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Backend mutex functions */
+ 132:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 133:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Allocate a mutex.  */
+ 134:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 135:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_mutex_allocate (objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 136:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 137:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 138:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 139:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 140:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Deallocate a mutex.  */
+ 141:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 142:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_mutex_deallocate (objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 143:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 144:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 145:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 146:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 147:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Grab a lock on a mutex.  */
+ 148:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 149:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_mutex_lock (objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 150:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 151:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* There can only be one thread, so we always get the lock */
+ 152:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 153:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 154:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 155:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Try to grab a lock on a mutex.  */
+ 156:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 157:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_mutex_trylock (objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 158:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 159:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   /* There can only be one thread, so we always get the lock */
+ 160:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 161:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 162:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 163:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Unlock the mutex */
+ 164:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 165:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_mutex_unlock (objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 166:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 167:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 168:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 169:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 170:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Backend condition mutex functions */
+ 171:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 172:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Allocate a condition.  */
+ 173:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 174:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_condition_allocate (objc_condition_t condition _GLIBCXX_UNUSED)
+ 175:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 176:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 177:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 178:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 179:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Deallocate a condition.  */
+ 180:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 181:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_condition_deallocate (objc_condition_t condition _GLIBCXX_UNUSED)
+ 182:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 183:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 184:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 185:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 186:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Wait on the condition */
+ 187:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 188:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_condition_wait (objc_condition_t condition _GLIBCXX_UNUSED,
+ 189:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 			       objc_mutex_t mutex _GLIBCXX_UNUSED)
+ 190:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 191:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 192:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 193:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 194:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Wake up all threads waiting on this condition.  */
+ 195:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 196:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_condition_broadcast (objc_condition_t condition _GLIBCXX_UNUSED)
+ 197:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 198:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 199:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 200:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 201:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** /* Wake up one thread waiting on this condition.  */
+ 202:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 203:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_objc_condition_signal (objc_condition_t condition _GLIBCXX_UNUSED)
+ 204:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 205:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 206:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 207:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 208:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** #else /* _LIBOBJC */
+ 209:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 210:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 211:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_active_p (void)
+ 212:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 213:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 214:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 215:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 216:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int
+ 217:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_once (__gthread_once_t *__once _GLIBCXX_UNUSED, void (*__func) (void) _GLIBCXX_UNUSED)
+ 218:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 219:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 220:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 221:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 222:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static inline int _GLIBCXX_UNUSED
+ 223:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_key_create (__gthread_key_t *__key _GLIBCXX_UNUSED, void (*__func) (void *) _GLIBCXX_UNUS
+ 224:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 225:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 226:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 227:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** 
+ 228:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** static int _GLIBCXX_UNUSED
+ 229:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** __gthread_key_delete (__gthread_key_t __key _GLIBCXX_UNUSED)
+ 230:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** {
+ 122              	 .loc 3 230 0
+ 123              	 .cfi_startproc
+ 124              	 
+ 125              	 
+ 126              	 
+ 127 0000 80B4     	 push {r7}
+ 128              	.LCFI11:
+ 129              	 .cfi_def_cfa_offset 4
+ 130              	 .cfi_offset 7,-4
+ 131 0002 83B0     	 sub sp,sp,#12
+ 132              	.LCFI12:
+ 133              	 .cfi_def_cfa_offset 16
+ 134 0004 00AF     	 add r7,sp,#0
+ 135              	.LCFI13:
+ 136              	 .cfi_def_cfa_register 7
+ 137 0006 7860     	 str r0,[r7,#4]
+ 231:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h ****   return 0;
+ 138              	 .loc 3 231 0
+ 139 0008 0023     	 movs r3,#0
+ 232:c:\kits\dave\dave-ide-4.4.2-64bit\eclipse\arm-gcc-49\arm-none-eabi\include\c++\4.9.3\arm-none-eabi\armv7e-m\softfp\bits\gthr-default.h **** }
+ 140              	 .loc 3 232 0
+ 141 000a 1846     	 mov r0,r3
+ 142 000c 0C37     	 adds r7,r7,#12
+ 143              	.LCFI14:
+ 144              	 .cfi_def_cfa_offset 4
+ 145 000e BD46     	 mov sp,r7
+ 146              	.LCFI15:
+ 147              	 .cfi_def_cfa_register 13
+ 148              	 
+ 149 0010 5DF8047B 	 ldr r7,[sp],#4
+ 150              	.LCFI16:
+ 151              	 .cfi_restore 7
+ 152              	 .cfi_def_cfa_offset 0
+ 153 0014 7047     	 bx lr
+ 154              	 .cfi_endproc
+ 155              	.LFE612:
+ 157 0016 00BF     	 .section .bss._ZL14Led_Controller,"aw",%nobits
+ 158              	 .align 2
+ 161              	_ZL14Led_Controller:
+ 162 0000 00000000 	 .space 44
+ 162      00000000 
+ 162      00000000 
+ 162      00000000 
+ 162      00000000 
+ 163              	 .section .rodata
+ 164              	 .align 2
+ 165              	.LC0:
+ 166 0000 44415645 	 .ascii "DAVE APPs initialization failed\012\000"
+ 166      20415050 
+ 166      7320696E 
+ 166      69746961 
+ 166      6C697A61 
+ 167 0021 000000   	 .align 2
+ 168              	.LC1:
+ 169 0024 4C696768 	 .ascii "Light Up\000"
+ 169      74205570 
+ 169      00
+ 170 002d 000000   	 .align 2
+ 171              	.LC2:
+ 172 0030 4572726F 	 .ascii "Error creating Light Up task\012\000"
+ 172      72206372 
+ 172      65617469 
+ 172      6E67204C 
+ 172      69676874 
+ 173 004e 0000     	 .align 2
+ 174              	.LC3:
+ 175 0050 4C696768 	 .ascii "Light Down\000"
+ 175      7420446F 
+ 175      776E00
+ 176 005b 00       	 .align 2
+ 177              	.LC4:
+ 178 005c 4572726F 	 .ascii "Error creating Light Down task\012\000"
+ 178      72206372 
+ 178      65617469 
+ 178      6E67204C 
+ 178      69676874 
+ 179              	 .section .text.main,"ax",%progbits
+ 180              	 .align 2
+ 181              	 .global main
+ 182              	 .thumb
+ 183              	 .thumb_func
+ 185              	main:
+ 186              	.LFB816:
+ 187              	 .file 4 "../main.cpp"
+   1:../main.cpp   **** /*
+   2:../main.cpp   ****  * main.cpp
+   3:../main.cpp   ****  *
+   4:../main.cpp   ****  *  Created on: 2019 May 14 13:08:09
+   5:../main.cpp   ****  *  Author: Iacob Marian
+   6:../main.cpp   ****  */
+   7:../main.cpp   **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
+   8:../main.cpp   **** 
+   9:../main.cpp   **** #include "Dave/Generated/FREERTOS/task.h"
+  10:../main.cpp   **** #include "Dave/Generated/FREERTOS/queue.h"
+  11:../main.cpp   **** #include "SM_LED/LedController.h"
+  12:../main.cpp   **** 
+  13:../main.cpp   **** #include<string>
+  14:../main.cpp   **** 
+  15:../main.cpp   **** const unsigned long LIGHT_UP_TASK_PRIORITY = tskIDLE_PRIORITY + 1;
+  16:../main.cpp   **** const unsigned long LIGHT_DOWN_TASK_PRIORITY = tskIDLE_PRIORITY + 1;
+  17:../main.cpp   **** 
+  18:../main.cpp   **** static void vTaskLightUp( void *pvParameters );
+  19:../main.cpp   **** static void vTaskLightDown( void *pvParameters );
+  20:../main.cpp   **** 
+  21:../main.cpp   **** static void ErrorHandler(std::string);
+  22:../main.cpp   **** 
+  23:../main.cpp   **** static led_controller::LedController Led_Controller;
+  24:../main.cpp   **** 
+  25:../main.cpp   **** /*
+  26:../main.cpp   ****  * @brief main() - Application entry point
+  27:../main.cpp   ****  *
+  28:../main.cpp   ****  * <b>Details of function</b><br>
+  29:../main.cpp   ****  * This routine is the application entry point. It is invoked by the device startup code. It is res
+  30:../main.cpp   ****  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder fo
+  31:../main.cpp   ****  * code.
+  32:../main.cpp   ****  */
+  33:../main.cpp   **** int main(void)
+  34:../main.cpp   **** {
+ 188              	 .loc 4 34 0
+ 189              	 .cfi_startproc
+ 190              	 
+ 191              	 
+ 192 0000 80B5     	 push {r7,lr}
+ 193              	.LCFI17:
+ 194              	 .cfi_def_cfa_offset 8
+ 195              	 .cfi_offset 7,-8
+ 196              	 .cfi_offset 14,-4
+ 197 0002 8AB0     	 sub sp,sp,#40
+ 198              	.LCFI18:
+ 199              	 .cfi_def_cfa_offset 48
+ 200 0004 02AF     	 add r7,sp,#8
+ 201              	.LCFI19:
+ 202              	 .cfi_def_cfa 7,40
+ 203              	.LBB2:
+  35:../main.cpp   ****   DAVE_STATUS_t status;
+  36:../main.cpp   **** 
+  37:../main.cpp   ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+ 204              	 .loc 4 37 0
+ 205 0006 FFF7FEFF 	 bl DAVE_Init
+ 206 000a 0346     	 mov r3,r0
+ 207 000c FB77     	 strb r3,[r7,#31]
+  38:../main.cpp   ****   if(status != DAVE_STATUS_SUCCESS)
+ 208              	 .loc 4 38 0
+ 209 000e FB7F     	 ldrb r3,[r7,#31]
+ 210 0010 002B     	 cmp r3,#0
+ 211 0012 16D0     	 beq .L8
+  39:../main.cpp   ****   {
+  40:../main.cpp   **** 	  ErrorHandler("DAVE APPs initialization failed\n");
+ 212              	 .loc 4 40 0
+ 213 0014 3B1D     	 adds r3,r7,#4
+ 214 0016 1846     	 mov r0,r3
+ 215 0018 FFF7FEFF 	 bl _ZNSaIcEC1Ev
+ 216 001c 3A46     	 mov r2,r7
+ 217 001e 3B1D     	 adds r3,r7,#4
+ 218 0020 1046     	 mov r0,r2
+ 219 0022 3449     	 ldr r1,.L12
+ 220 0024 1A46     	 mov r2,r3
+ 221 0026 FFF7FEFF 	 bl _ZNSsC1EPKcRKSaIcE
+ 222 002a 3B46     	 mov r3,r7
+ 223 002c 1846     	 mov r0,r3
+ 224 002e FFF7FEFF 	 bl _ZL12ErrorHandlerSs
+ 225 0032 3B46     	 mov r3,r7
+ 226 0034 1846     	 mov r0,r3
+ 227 0036 FFF7FEFF 	 bl _ZNSsD1Ev
+ 228 003a 3B1D     	 adds r3,r7,#4
+ 229 003c 1846     	 mov r0,r3
+ 230 003e FFF7FEFF 	 bl _ZNSaIcED1Ev
+ 231              	.L8:
+  41:../main.cpp   ****   }
+  42:../main.cpp   **** 
+  43:../main.cpp   ****   BaseType_t xReturned = xTaskCreate( vTaskLightUp, ( const char * const ) "Light Up", configMINIMA
+ 232              	 .loc 4 43 0
+ 233 0042 0123     	 movs r3,#1
+ 234 0044 0093     	 str r3,[sp]
+ 235 0046 0023     	 movs r3,#0
+ 236 0048 0193     	 str r3,[sp,#4]
+ 237 004a 2B48     	 ldr r0,.L12+4
+ 238 004c 2B49     	 ldr r1,.L12+8
+ 239 004e 8222     	 movs r2,#130
+ 240 0050 0023     	 movs r3,#0
+ 241 0052 FFF7FEFF 	 bl xTaskCreate
+ 242 0056 B861     	 str r0,[r7,#24]
+  44:../main.cpp   ****   if(xReturned != pdPASS)
+ 243              	 .loc 4 44 0
+ 244 0058 BB69     	 ldr r3,[r7,#24]
+ 245 005a 012B     	 cmp r3,#1
+ 246 005c 1CD0     	 beq .L9
+  45:../main.cpp   ****   {
+  46:../main.cpp   **** 	  ErrorHandler("Error creating Light Up task\n");
+ 247              	 .loc 4 46 0
+ 248 005e 07F10C03 	 add r3,r7,#12
+ 249 0062 1846     	 mov r0,r3
+ 250 0064 FFF7FEFF 	 bl _ZNSaIcEC1Ev
+ 251 0068 07F10802 	 add r2,r7,#8
+ 252 006c 07F10C03 	 add r3,r7,#12
+ 253 0070 1046     	 mov r0,r2
+ 254 0072 2349     	 ldr r1,.L12+12
+ 255 0074 1A46     	 mov r2,r3
+ 256 0076 FFF7FEFF 	 bl _ZNSsC1EPKcRKSaIcE
+ 257 007a 07F10803 	 add r3,r7,#8
+ 258 007e 1846     	 mov r0,r3
+ 259 0080 FFF7FEFF 	 bl _ZL12ErrorHandlerSs
+ 260 0084 07F10803 	 add r3,r7,#8
+ 261 0088 1846     	 mov r0,r3
+ 262 008a FFF7FEFF 	 bl _ZNSsD1Ev
+ 263 008e 07F10C03 	 add r3,r7,#12
+ 264 0092 1846     	 mov r0,r3
+ 265 0094 FFF7FEFF 	 bl _ZNSaIcED1Ev
+ 266              	.L9:
+  47:../main.cpp   ****   }
+  48:../main.cpp   **** 
+  49:../main.cpp   ****   xReturned =  xTaskCreate( vTaskLightDown, ( const char * const ) "Light Down", configMINIMAL_STAC
+ 267              	 .loc 4 49 0
+ 268 0098 0123     	 movs r3,#1
+ 269 009a 0093     	 str r3,[sp]
+ 270 009c 0023     	 movs r3,#0
+ 271 009e 0193     	 str r3,[sp,#4]
+ 272 00a0 1848     	 ldr r0,.L12+16
+ 273 00a2 1949     	 ldr r1,.L12+20
+ 274 00a4 8222     	 movs r2,#130
+ 275 00a6 0023     	 movs r3,#0
+ 276 00a8 FFF7FEFF 	 bl xTaskCreate
+ 277 00ac B861     	 str r0,[r7,#24]
+  50:../main.cpp   ****   if(xReturned != pdPASS)
+ 278              	 .loc 4 50 0
+ 279 00ae BB69     	 ldr r3,[r7,#24]
+ 280 00b0 012B     	 cmp r3,#1
+ 281 00b2 1CD0     	 beq .L10
+  51:../main.cpp   ****   {
+  52:../main.cpp   **** 	  ErrorHandler("Error creating Light Down task\n");
+ 282              	 .loc 4 52 0
+ 283 00b4 07F11403 	 add r3,r7,#20
+ 284 00b8 1846     	 mov r0,r3
+ 285 00ba FFF7FEFF 	 bl _ZNSaIcEC1Ev
+ 286 00be 07F11002 	 add r2,r7,#16
+ 287 00c2 07F11403 	 add r3,r7,#20
+ 288 00c6 1046     	 mov r0,r2
+ 289 00c8 1049     	 ldr r1,.L12+24
+ 290 00ca 1A46     	 mov r2,r3
+ 291 00cc FFF7FEFF 	 bl _ZNSsC1EPKcRKSaIcE
+ 292 00d0 07F11003 	 add r3,r7,#16
+ 293 00d4 1846     	 mov r0,r3
+ 294 00d6 FFF7FEFF 	 bl _ZL12ErrorHandlerSs
+ 295 00da 07F11003 	 add r3,r7,#16
+ 296 00de 1846     	 mov r0,r3
+ 297 00e0 FFF7FEFF 	 bl _ZNSsD1Ev
+ 298 00e4 07F11403 	 add r3,r7,#20
+ 299 00e8 1846     	 mov r0,r3
+ 300 00ea FFF7FEFF 	 bl _ZNSaIcED1Ev
+ 301              	.L10:
+  53:../main.cpp   ****   }
+  54:../main.cpp   **** 
+  55:../main.cpp   ****   vTaskStartScheduler();
+ 302              	 .loc 4 55 0
+ 303 00ee FFF7FEFF 	 bl vTaskStartScheduler
+ 304              	.L11:
+  56:../main.cpp   **** 
+  57:../main.cpp   ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+  58:../main.cpp   ****   while(1U)
+  59:../main.cpp   ****   {
+  60:../main.cpp   ****   }
+ 305              	 .loc 4 60 0 discriminator 1
+ 306 00f2 FEE7     	 b .L11
+ 307              	.L13:
+ 308              	 .align 2
+ 309              	.L12:
+ 310 00f4 00000000 	 .word .LC0
+ 311 00f8 00000000 	 .word _ZL12vTaskLightUpPv
+ 312 00fc 24000000 	 .word .LC1
+ 313 0100 30000000 	 .word .LC2
+ 314 0104 00000000 	 .word _ZL14vTaskLightDownPv
+ 315 0108 50000000 	 .word .LC3
+ 316 010c 5C000000 	 .word .LC4
+ 317              	.LBE2:
+ 318              	 .cfi_endproc
+ 319              	.LFE816:
+ 321              	 .section .text._ZL12ErrorHandlerSs,"ax",%progbits
+ 322              	 .align 2
+ 323              	 .thumb
+ 324              	 .thumb_func
+ 326              	_ZL12ErrorHandlerSs:
+ 327              	.LFB817:
+  61:../main.cpp   **** }
+  62:../main.cpp   **** 
+  63:../main.cpp   **** static void ErrorHandler(std::string error)
+  64:../main.cpp   **** {
+ 328              	 .loc 4 64 0
+ 329              	 .cfi_startproc
+ 330              	 
+ 331              	 
+ 332              	 
+ 333 0000 80B4     	 push {r7}
+ 334              	.LCFI20:
+ 335              	 .cfi_def_cfa_offset 4
+ 336              	 .cfi_offset 7,-4
+ 337 0002 83B0     	 sub sp,sp,#12
+ 338              	.LCFI21:
+ 339              	 .cfi_def_cfa_offset 16
+ 340 0004 00AF     	 add r7,sp,#0
+ 341              	.LCFI22:
+ 342              	 .cfi_def_cfa_register 7
+ 343 0006 7860     	 str r0,[r7,#4]
+ 344              	.L15:
+  63:../main.cpp   **** {
+ 345              	 .loc 4 63 0 discriminator 1
+ 346 0008 FEE7     	 b .L15
+ 347              	 .cfi_endproc
+ 348              	.LFE817:
+ 350 000a 00BF     	 .section .text._ZL12vTaskLightUpPv,"ax",%progbits
+ 351              	 .align 2
+ 352              	 .thumb
+ 353              	 .thumb_func
+ 355              	_ZL12vTaskLightUpPv:
+ 356              	.LFB818:
+  65:../main.cpp   **** 	XMC_DEBUG(error);
+  66:../main.cpp   **** 	for(;;)
+  67:../main.cpp   **** 	{
+  68:../main.cpp   **** 
+  69:../main.cpp   **** 	}
+  70:../main.cpp   **** }
+  71:../main.cpp   **** static void vTaskLightUp( void *pvParameters )
+  72:../main.cpp   **** {
+ 357              	 .loc 4 72 0
+ 358              	 .cfi_startproc
+ 359              	 
+ 360              	 
+ 361 0000 80B5     	 push {r7,lr}
+ 362              	.LCFI23:
+ 363              	 .cfi_def_cfa_offset 8
+ 364              	 .cfi_offset 7,-8
+ 365              	 .cfi_offset 14,-4
+ 366 0002 82B0     	 sub sp,sp,#8
+ 367              	.LCFI24:
+ 368              	 .cfi_def_cfa_offset 16
+ 369 0004 00AF     	 add r7,sp,#0
+ 370              	.LCFI25:
+ 371              	 .cfi_def_cfa_register 7
+ 372 0006 7860     	 str r0,[r7,#4]
+ 373              	.L18:
+  73:../main.cpp   **** 	//configASSERT( ((uint32_t) pvParameters) == 1);
+  74:../main.cpp   **** 
+  75:../main.cpp   **** 	for(;;)
+  76:../main.cpp   **** 	{
+  77:../main.cpp   **** 		if(DIGITAL_IO_GetInput(&LightUpButton) == 0)
+ 374              	 .loc 4 77 0
+ 375 0008 0A48     	 ldr r0,.L19
+ 376 000a FFF7FEFF 	 bl DIGITAL_IO_GetInput
+ 377 000e 0346     	 mov r3,r0
+ 378 0010 002B     	 cmp r3,#0
+ 379 0012 0CBF     	 ite eq
+ 380 0014 0123     	 moveq r3,#1
+ 381 0016 0023     	 movne r3,#0
+ 382 0018 DBB2     	 uxtb r3,r3
+ 383 001a 002B     	 cmp r3,#0
+ 384 001c 08D0     	 beq .L17
+  78:../main.cpp   **** 		{
+  79:../main.cpp   **** 			vTaskDelay(pdMS_TO_TICKS(500));
+ 385              	 .loc 4 79 0
+ 386 001e 4FF4FA70 	 mov r0,#500
+ 387 0022 FFF7FEFF 	 bl vTaskDelay
+  80:../main.cpp   **** 			Led_Controller.LightUp(500U);
+ 388              	 .loc 4 80 0
+ 389 0026 0448     	 ldr r0,.L19+4
+ 390 0028 4FF4FA71 	 mov r1,#500
+ 391 002c FFF7FEFF 	 bl _ZN14led_controller13LedController7LightUpEi
+ 392              	.L17:
+  71:../main.cpp   **** {
+ 393              	 .loc 4 71 0
+ 394 0030 EAE7     	 b .L18
+ 395              	.L20:
+ 396 0032 00BF     	 .align 2
+ 397              	.L19:
+ 398 0034 00000000 	 .word LightUpButton
+ 399 0038 00000000 	 .word _ZL14Led_Controller
+ 400              	 .cfi_endproc
+ 401              	.LFE818:
+ 403              	 .section .text._ZL14vTaskLightDownPv,"ax",%progbits
+ 404              	 .align 2
+ 405              	 .thumb
+ 406              	 .thumb_func
+ 408              	_ZL14vTaskLightDownPv:
+ 409              	.LFB819:
+  81:../main.cpp   **** 		}
+  82:../main.cpp   **** 	}
+  83:../main.cpp   **** }
+  84:../main.cpp   **** 
+  85:../main.cpp   **** static void vTaskLightDown( void *pvParameters )
+  86:../main.cpp   **** {
+ 410              	 .loc 4 86 0
+ 411              	 .cfi_startproc
+ 412              	 
+ 413              	 
+ 414 0000 80B5     	 push {r7,lr}
+ 415              	.LCFI26:
+ 416              	 .cfi_def_cfa_offset 8
+ 417              	 .cfi_offset 7,-8
+ 418              	 .cfi_offset 14,-4
+ 419 0002 82B0     	 sub sp,sp,#8
+ 420              	.LCFI27:
+ 421              	 .cfi_def_cfa_offset 16
+ 422 0004 00AF     	 add r7,sp,#0
+ 423              	.LCFI28:
+ 424              	 .cfi_def_cfa_register 7
+ 425 0006 7860     	 str r0,[r7,#4]
+ 426              	.L23:
+  87:../main.cpp   **** 	//configASSERT( ((uint32_t) pvParameters) == 1);
+  88:../main.cpp   **** 
+  89:../main.cpp   **** 	for(;;)
+  90:../main.cpp   **** 	{
+  91:../main.cpp   **** 		if(DIGITAL_IO_GetInput(&LightDownButton) == 0)
+ 427              	 .loc 4 91 0
+ 428 0008 0A48     	 ldr r0,.L24
+ 429 000a FFF7FEFF 	 bl DIGITAL_IO_GetInput
+ 430 000e 0346     	 mov r3,r0
+ 431 0010 002B     	 cmp r3,#0
+ 432 0012 0CBF     	 ite eq
+ 433 0014 0123     	 moveq r3,#1
+ 434 0016 0023     	 movne r3,#0
+ 435 0018 DBB2     	 uxtb r3,r3
+ 436 001a 002B     	 cmp r3,#0
+ 437 001c 08D0     	 beq .L22
+  92:../main.cpp   **** 		{
+  93:../main.cpp   **** 			vTaskDelay(pdMS_TO_TICKS(500));
+ 438              	 .loc 4 93 0
+ 439 001e 4FF4FA70 	 mov r0,#500
+ 440 0022 FFF7FEFF 	 bl vTaskDelay
+  94:../main.cpp   **** 			Led_Controller.LightDown(500U);
+ 441              	 .loc 4 94 0
+ 442 0026 0448     	 ldr r0,.L24+4
+ 443 0028 4FF4FA71 	 mov r1,#500
+ 444 002c FFF7FEFF 	 bl _ZN14led_controller13LedController9LightDownEi
+ 445              	.L22:
+  85:../main.cpp   **** {
+ 446              	 .loc 4 85 0
+ 447 0030 EAE7     	 b .L23
+ 448              	.L25:
+ 449 0032 00BF     	 .align 2
+ 450              	.L24:
+ 451 0034 00000000 	 .word LightDownButton
+ 452 0038 00000000 	 .word _ZL14Led_Controller
+ 453              	 .cfi_endproc
+ 454              	.LFE819:
+ 456              	 .section .text._Z41__static_initialization_and_destruction_0ii,"ax",%progbits
+ 457              	 .align 2
+ 458              	 .thumb
+ 459              	 .thumb_func
+ 461              	_Z41__static_initialization_and_destruction_0ii:
+ 462              	.LFB849:
+  95:../main.cpp   **** 		}
+  96:../main.cpp   **** 	}
+  97:../main.cpp   **** }
+ 463              	 .loc 4 97 0
+ 464              	 .cfi_startproc
+ 465              	 
+ 466              	 
+ 467 0000 80B5     	 push {r7,lr}
+ 468              	.LCFI29:
+ 469              	 .cfi_def_cfa_offset 8
+ 470              	 .cfi_offset 7,-8
+ 471              	 .cfi_offset 14,-4
+ 472 0002 82B0     	 sub sp,sp,#8
+ 473              	.LCFI30:
+ 474              	 .cfi_def_cfa_offset 16
+ 475 0004 00AF     	 add r7,sp,#0
+ 476              	.LCFI31:
+ 477              	 .cfi_def_cfa_register 7
+ 478 0006 7860     	 str r0,[r7,#4]
+ 479 0008 3960     	 str r1,[r7]
+ 480              	 .loc 4 97 0
+ 481 000a 7B68     	 ldr r3,[r7,#4]
+ 482 000c 012B     	 cmp r3,#1
+ 483 000e 07D1     	 bne .L26
+ 484              	 .loc 4 97 0 is_stmt 0 discriminator 1
+ 485 0010 3B68     	 ldr r3,[r7]
+ 486 0012 4FF6FF72 	 movw r2,#65535
+ 487 0016 9342     	 cmp r3,r2
+ 488 0018 02D1     	 bne .L26
+  23:../main.cpp   **** 
+ 489              	 .loc 4 23 0 is_stmt 1
+ 490 001a 0348     	 ldr r0,.L28
+ 491 001c FFF7FEFF 	 bl _ZN14led_controller13LedControllerC1Ev
+ 492              	.L26:
+ 493              	 .loc 4 97 0
+ 494 0020 0837     	 adds r7,r7,#8
+ 495              	.LCFI32:
+ 496              	 .cfi_def_cfa_offset 8
+ 497 0022 BD46     	 mov sp,r7
+ 498              	.LCFI33:
+ 499              	 .cfi_def_cfa_register 13
+ 500              	 
+ 501 0024 80BD     	 pop {r7,pc}
+ 502              	.L29:
+ 503 0026 00BF     	 .align 2
+ 504              	.L28:
+ 505 0028 00000000 	 .word _ZL14Led_Controller
+ 506              	 .cfi_endproc
+ 507              	.LFE849:
+ 509              	 .section .rodata._ZL22LIGHT_UP_TASK_PRIORITY,"a",%progbits
+ 510              	 .align 2
+ 513              	_ZL22LIGHT_UP_TASK_PRIORITY:
+ 514 0000 01000000 	 .word 1
+ 515              	 .section .rodata._ZL24LIGHT_DOWN_TASK_PRIORITY,"a",%progbits
+ 516              	 .align 2
+ 519              	_ZL24LIGHT_DOWN_TASK_PRIORITY:
+ 520 0000 01000000 	 .word 1
+ 521              	 .section .text._GLOBAL__sub_I_main,"ax",%progbits
+ 522              	 .align 2
+ 523              	 .thumb
+ 524              	 .thumb_func
+ 526              	_GLOBAL__sub_I_main:
+ 527              	.LFB850:
+ 528              	 .loc 4 97 0
+ 529              	 .cfi_startproc
+ 530              	 
+ 531              	 
+ 532 0000 80B5     	 push {r7,lr}
+ 533              	.LCFI34:
+ 534              	 .cfi_def_cfa_offset 8
+ 535              	 .cfi_offset 7,-8
+ 536              	 .cfi_offset 14,-4
+ 537 0002 00AF     	 add r7,sp,#0
+ 538              	.LCFI35:
+ 539              	 .cfi_def_cfa_register 7
+ 540              	 .loc 4 97 0
+ 541 0004 0120     	 movs r0,#1
+ 542 0006 4FF6FF71 	 movw r1,#65535
+ 543 000a FFF7FEFF 	 bl _Z41__static_initialization_and_destruction_0ii
+ 544 000e 80BD     	 pop {r7,pc}
+ 545              	 .cfi_endproc
+ 546              	.LFE850:
+ 548              	 .section .init_array,"aw",%init_array
+ 549              	 .align 2
+ 550 0000 00000000 	 .word _GLOBAL__sub_I_main(target1)
+ 551              	 .text
+ 552              	.Letext0:
+ 553              	 .file 5 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
+ 554              	 .file 6 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 555              	 .file 7 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 556              	 .file 8 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\lock.h"
+ 557              	 .file 9 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\_types.h"
+ 558              	 .file 10 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\reent.h"
+ 559              	 .file 11 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 560              	 .file 12 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/FREERTOS/portable/GCC/portmacro.h"
+ 561              	 .file 13 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DAVE.h"
+ 562              	 .file 14 "../SM_LED/StateMachine.h"
+ 563              	 .file 15 "../SM_LED/LedController.h"
+ 564              	 .file 16 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\debug\\debug.h"
+ 565              	 .file 17 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\cwchar"
+ 566              	 .file 18 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\char_traits.h"
+ 567              	 .file 19 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\arm-none-eabi\\armv7e-m\\softfp\\bits\\c++config.h"
+ 568              	 .file 20 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\allocator.h"
+ 569              	 .file 21 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\clocale"
+ 570              	 .file 22 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\basic_string.h"
+ 571              	 .file 23 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\basic_string.tcc"
+ 572              	 .file 24 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\stringfwd.h"
+ 573              	 .file 25 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\cpp_type_traits.h"
+ 574              	 .file 26 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\bits\\predefined_ops.h"
+ 575              	 .file 27 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\ext\\new_allocator.h"
+ 576              	 .file 28 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\ext\\numeric_traits.h"
+ 577              	 .file 29 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stdarg.h"
+ 578              	 .file 30 "<built-in>"
+ 579              	 .file 31 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\wchar.h"
+ 580              	 .file 32 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\locale.h"
+ 581              	 .file 33 "c:\\kits\\dave\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\c++\\4.9.3\\arm-none-eabi\\armv7e-m\\softfp\\bits\\atomic_word.h"
+ 582              	 .file 34 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/CMSIS/Include/core_cm4.h"
+ 583              	 .file 35 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Libraries/CMSIS/Infineon/XMC4500_series/Include/system_XMC4500.h"
+ 584              	 .file 36 "C:/Workspaces/DAVE-4.4.2-64Bit/FreeRtos_Led/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+    {standard input}:20     .text.XMC_GPIO_GetInput:00000000 $t
+    {standard input}:24     .text.XMC_GPIO_GetInput:00000000 XMC_GPIO_GetInput
+    {standard input}:69     .text.DIGITAL_IO_GetInput:00000000 $t
+    {standard input}:73     .text.DIGITAL_IO_GetInput:00000000 DIGITAL_IO_GetInput
+    {standard input}:115    .text._ZL20__gthread_key_deletei:00000000 $t
+    {standard input}:119    .text._ZL20__gthread_key_deletei:00000000 _ZL20__gthread_key_deletei
+    {standard input}:158    .bss._ZL14Led_Controller:00000000 $d
+    {standard input}:161    .bss._ZL14Led_Controller:00000000 _ZL14Led_Controller
+    {standard input}:164    .rodata:00000000 $d
+    {standard input}:180    .text.main:00000000 $t
+    {standard input}:185    .text.main:00000000 main
+    {standard input}:326    .text._ZL12ErrorHandlerSs:00000000 _ZL12ErrorHandlerSs
+    {standard input}:310    .text.main:000000f4 $d
+    {standard input}:355    .text._ZL12vTaskLightUpPv:00000000 _ZL12vTaskLightUpPv
+    {standard input}:408    .text._ZL14vTaskLightDownPv:00000000 _ZL14vTaskLightDownPv
+    {standard input}:322    .text._ZL12ErrorHandlerSs:00000000 $t
+    {standard input}:351    .text._ZL12vTaskLightUpPv:00000000 $t
+    {standard input}:398    .text._ZL12vTaskLightUpPv:00000034 $d
+    {standard input}:404    .text._ZL14vTaskLightDownPv:00000000 $t
+    {standard input}:451    .text._ZL14vTaskLightDownPv:00000034 $d
+    {standard input}:457    .text._Z41__static_initialization_and_destruction_0ii:00000000 $t
+    {standard input}:461    .text._Z41__static_initialization_and_destruction_0ii:00000000 _Z41__static_initialization_and_destruction_0ii
+    {standard input}:505    .text._Z41__static_initialization_and_destruction_0ii:00000028 $d
+    {standard input}:510    .rodata._ZL22LIGHT_UP_TASK_PRIORITY:00000000 $d
+    {standard input}:513    .rodata._ZL22LIGHT_UP_TASK_PRIORITY:00000000 _ZL22LIGHT_UP_TASK_PRIORITY
+    {standard input}:516    .rodata._ZL24LIGHT_DOWN_TASK_PRIORITY:00000000 $d
+    {standard input}:519    .rodata._ZL24LIGHT_DOWN_TASK_PRIORITY:00000000 _ZL24LIGHT_DOWN_TASK_PRIORITY
+    {standard input}:522    .text._GLOBAL__sub_I_main:00000000 $t
+    {standard input}:526    .text._GLOBAL__sub_I_main:00000000 _GLOBAL__sub_I_main
+    {standard input}:549    .init_array:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+DAVE_Init
+_ZNSaIcEC1Ev
+_ZNSsC1EPKcRKSaIcE
+_ZNSsD1Ev
+_ZNSaIcED1Ev
+xTaskCreate
+vTaskStartScheduler
+vTaskDelay
+_ZN14led_controller13LedController7LightUpEi
+LightUpButton
+_ZN14led_controller13LedController9LightDownEi
+LightDownButton
+_ZN14led_controller13LedControllerC1Ev
