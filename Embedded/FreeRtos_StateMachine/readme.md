@@ -1,6 +1,6 @@
 
 ##                       Controlling a LED intensity using a Finite State Machine model. 
-</br>
+
 # Board : Infineon XMC4500
 # IDE : Dave
 
