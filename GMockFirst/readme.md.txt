@@ -1,1 +1,1 @@
-jenkins triger update
+jenkins triger upd
